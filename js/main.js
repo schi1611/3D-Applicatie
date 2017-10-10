@@ -16,12 +16,10 @@ function onLoad() {
     var canvasContainer = document.getElementById('canvas');
     canvasContainer.appendChild(renderer.domElement);
 
-    //test cube
-    var cGeometry = new THREE.BoxGeometry(10,10,10);
-    var cMaterial = new THREE.MeshPhongMaterial( { color:0xffffff } );
-    var cube = new THREE.Mesh(cGeometry,cMaterial);
-    cube.position.set(0,0,0);
-    scene.add(cube);
+    var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry(width/4,height/4,2,2), new THREE.MeshPhongMaterial( { color: 0xf0f0f0 } ));
+    ground.position.z = -10;
+    ground.rotation.x = -Math.PI / 2 - 0.3;
+    scene.add(ground);
 
     addLights();
 
