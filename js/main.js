@@ -1,4 +1,4 @@
-var scene, renderer, camera;
+var scene, renderer, camera, snake;
 var height = window.innerHeight;
 var width = window.innerWidth;
 
@@ -23,12 +23,18 @@ function onLoad() {
 
     addLights();
 
+    snake = new Snake(0,0, 0xffff00);
+    snake.faster();
+    snake.faster();
+
     camera.lookAt(new THREE.Vector3(0,0,0));
     animate();
 };
 
 function animate() {
     requestAnimationFrame(animate);
+
+    snake.move();
 
     window.addEventListener( 'resize', onWindowResize, false );
 
