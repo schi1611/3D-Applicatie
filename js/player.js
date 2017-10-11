@@ -9,14 +9,23 @@ class Player {
 
 controls(left, right)
     {
+        var left = "";
+        var right = "";
         window.addEventListener('keydown', controlfunction);
 
         function controlfunction(event)
         {
+
             //this.keyboard[event.keyCode] = true;
-            var left = prompt("button Left").charCodeAt(0) ;
-            var right = prompt("button right").charCodeAt(0) ;
+            if (left == "" && right == "") {
+                left = prompt("button Left").charCodeAt(0);
+                right = prompt("button right").charCodeAt(0);
+            }
             console.log(event.keyCode);
+            if (event.keyCode == left)
+                alert("je gaat links");
+            if (event.keyCode == right)
+                alert("je gaat rechts");
         }
     }
 }
