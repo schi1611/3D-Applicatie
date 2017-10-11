@@ -4,7 +4,7 @@ var width = window.innerWidth;
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
-    camera.position.set(0, 250, 0);
+    camera.position.set(0, 220, 50);
     scene = new THREE.Scene();
     scene.add(camera);
 
@@ -18,7 +18,7 @@ function onLoad() {
 
     var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry(width/4,height/4,2,2), new THREE.MeshPhongMaterial( { color: 0xf0f0f0 } ));
     ground.position.z = -10;
-    ground.rotation.x = -Math.PI / 2 - 0.3;
+    ground.rotation.x = -Math.PI / 2;
     scene.add(ground);
 
     addLights();
