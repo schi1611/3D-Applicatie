@@ -16,9 +16,9 @@ mtlLoader.load("Models/PlayGround.mtl", function(materials){
         });
 
         scene.add(mesh);
-        mesh.scale.set(1.61,0.83,1);
+        mesh.scale.set(width/1495,height/1460,1);
         mesh.rotation.x = -Math.PI/2;
-        mesh.position.set(0,0,-6);
+        mesh.position.set(0.3,0,-7);
     });
 
 });
