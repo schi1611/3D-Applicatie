@@ -25,11 +25,11 @@ controls(left,right)
             console.log(event.keyCode);
             if (event.keyCode == left)
             {
-                sn.sphere.position.z -= 0.3;
+                sn.direction.z -=  Math.PI * 0.01;
             }
 
             if (event.keyCode == right) {
-                sn.sphere.position.z += 0.3;
+                sn.direction.z +=  Math.PI * 0.01;
             }
         }
     }

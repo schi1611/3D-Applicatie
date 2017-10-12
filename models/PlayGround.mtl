@@ -1,0 +1,1519 @@
+# Exported from 3D Builder
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Water
+Kd 0.592157 0.894118 0.964706
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Light_Wood
+Kd 0.937255 0.764706 0.501961
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Fall_Leafs
+Kd 0.619608 0.356863 0.235294
+
+newmtl Leafs
+Kd 0.266667 0.403922 0.400000
+
+newmtl Wood
+Kd 0.666667 0.541176 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Green_leafs
+Kd 0.298039 0.529412 0.427451
+
+newmtl Green_Roof
+Kd 0.309804 0.466667 0.458824
+
+newmtl Wood_0
+Kd 0.666667 0.545098 0.356863
+
+newmtl Leafs_0
+Kd 0.270588 0.407843 0.400000

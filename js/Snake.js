@@ -5,7 +5,7 @@ class Snake{
     constructor(posX, posZ, color){
         this.size = 2;
         this.posY = this.size;
-        this.speed = 0.5;
+        this.speed = 0.1;
         this.trail = true;
         this.material = new THREE.MeshPhongMaterial({
             color: color,

@@ -5,6 +5,7 @@ var width = window.innerWidth;
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
     camera.position.set(0, 220, 50);
+    camera.position.set(0, height/3, 50);
     scene = new THREE.Scene();
     scene.add(camera);
 
@@ -27,6 +28,8 @@ function onLoad() {
     snake.faster();
     snake.faster();
 
+    var player = new Player(0,snake);
+    player.controls("A", "D");
     camera.lookAt(new THREE.Vector3(0,0,0));
     animate();
 };
