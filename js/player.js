@@ -12,7 +12,7 @@ controls(left,right)
         var left = left.charCodeAt(0);
         var right = right.charCodeAt(0);
         window.addEventListener('keydown', controlfunction);
-
+        //window.addEventListener('keyup', controlfunction);
         var sn = this.snake;
         function controlfunction(event)
         {
@@ -23,13 +23,17 @@ controls(left,right)
             //     right = prompt("button right").charCodeAt(0);
             // }
             console.log(event.keyCode);
-            if (event.keyCode == left)
+
+            if (keyboard[left])
             {
-                sn.direction.z -=  Math.PI * 0.01;
+                //sn.direction.z -=  Math.PI * 0.1;
+                sn.left();
             }
 
-            if (event.keyCode == right) {
-                sn.direction.z +=  Math.PI * 0.01;
+
+            if (keyboard[right]) {
+                //sn.direction.z +=  Math.PI * 0.1;
+                sn.right();
             }
         }
     }

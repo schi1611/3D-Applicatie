@@ -3,9 +3,10 @@
  */
 class Snake{
     constructor(posX, posZ, color){
-        this.size = 2;
+        this.size = 3;
         this.posY = this.size;
-        this.speed = 0.1;
+        this.speed = 0.2;
+        this.rotateSpeed = Math.PI * 0.1;
         this.trail = true;
         this.material = new THREE.MeshPhongMaterial({
             color: color,
@@ -26,8 +27,9 @@ class Snake{
     }
 
     move(){
-        this.sphere.position.add(this.speedDirection.copy(this.direction).multiplyScalar(this.speed));
-
+        //this.sphere.position.add(this.speedDirection.copy(this.direction).multiplyScalar(this.speed));
+        this.sphere.position.x -= -Math.sin(this.sphere.rotation.y) * this.speed;
+        this.sphere.position.z -= Math.cos(this.sphere.rotation.y) * this.speed;
         //test trail
         var newPos = new THREE.Vector3().copy(this.sphere.position);
         this.linePoints.push(newPos);
@@ -37,7 +39,12 @@ class Snake{
         this.line = new THREE.Line(this.geometry, this.materialTrail);
         scene.add(this.line);
     }
-
+    left(){
+        this.sphere.rotation.y -= this.rotateSpeed;
+    }
+    right() {
+        this.sphere.rotation.y += this.rotateSpeed;
+    }
     collision(){
         this.speed = 0;
     }

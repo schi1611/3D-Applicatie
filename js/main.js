@@ -1,6 +1,8 @@
-var scene, renderer, camera, snake;
+var scene, renderer, camera, snake, player;
 var height = window.innerHeight;
 var width = window.innerWidth;
+
+var keyboard = {};
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
@@ -27,7 +29,7 @@ function onLoad() {
     snake.faster();
     snake.faster();
 
-    var player = new Player(0,snake);
+    player = new Player(0,snake);
     player.controls("A", "D");
     camera.lookAt(new THREE.Vector3(0,0,0));
     animate();
@@ -36,12 +38,36 @@ function onLoad() {
 function animate() {
     requestAnimationFrame(animate);
 
+    if (keyboard[37])
+    {
+        //sn.direction.z -=  Math.PI * 0.1;
+        snake.left();
+    }
+
+
+    if (keyboard[39]) {
+        //sn.direction.z +=  Math.PI * 0.1;
+        snake.right();
+    }
+
     snake.move();
 
     window.addEventListener( 'resize', onWindowResize, false );
 
     renderer.render(scene, camera);
 };
+
+
+function keyDown(event) {
+    keyboard[event.keyCode] = true;
+}
+
+function keyUp(event) {
+    keyboard[event.keyCode] = false;
+}
+
+window.addEventListener('keydown', keyDown);
+window.addEventListener('keyup', keyUp);
 
 //voegt lichten toe
 function addLights() {
