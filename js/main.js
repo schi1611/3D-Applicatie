@@ -4,7 +4,6 @@ var width = window.innerWidth;
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
-    camera.position.set(0, 220, 50);
     camera.position.set(0, height/3, 50);
     scene = new THREE.Scene();
     scene.add(camera);
