@@ -1,31 +1,36 @@
 class Player {
-    constructor(color, snake)
+    constructor(color, _snake)
     {
         var score = 0;
         this.color = color;
-        this.snake = snake;
+        this.snake = _snake;
         this.keyboard = {};
     }
 
-controls(left, right)
+controls(left,right)
     {
-        var left = "";
-        var right = "";
+        var left = left.charCodeAt(0);
+        var right = right.charCodeAt(0);
         window.addEventListener('keydown', controlfunction);
 
+        var sn = this.snake;
         function controlfunction(event)
         {
 
             //this.keyboard[event.keyCode] = true;
-            if (left == "" && right == "") {
-                left = prompt("button Left").charCodeAt(0);
-                right = prompt("button right").charCodeAt(0);
-            }
+            // if (left == "" && right == "") {
+            //     left = prompt("button Left").charCodeAt(0);
+            //     right = prompt("button right").charCodeAt(0);
+            // }
             console.log(event.keyCode);
             if (event.keyCode == left)
-                alert("je gaat links");
-            if (event.keyCode == right)
-                alert("je gaat rechts");
+            {
+                sn.sphere.position.z -= 0.3;
+            }
+
+            if (event.keyCode == right) {
+                sn.sphere.position.z += 0.3;
+            }
         }
     }
 }
