@@ -6,7 +6,7 @@ class Snake{
         this.size = 3;
         this.posY = this.size;
         this.speed = 0.2;
-        this.rotateSpeed = Math.PI * 0.1;
+        this.rotateSpeed = Math.PI * 0.05;
         this.trail = true;
         this.material = new THREE.MeshPhongMaterial({
             color: color,
