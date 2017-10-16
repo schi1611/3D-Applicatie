@@ -1,4 +1,4 @@
-var scene, renderer, camera, snake, player;
+var scene, renderer, camera, snake, player, players;
 var height = window.innerHeight;
 var width = window.innerWidth;
 
@@ -66,16 +66,42 @@ function onLoad() {
     snake.faster();
 
     player = new Player(0,snake, new Controls("A", "D", " "));
+    player2 = new Player(1, new Snake(2,2, 0x0000ff), new Controls("J","K", " "));
+    player2.snake.faster();
+    players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
     animate();
 };
 
 function animate() {
     requestAnimationFrame(animate);
-    player.update();
-    snake.move();
+    for(var i = 0; i < players.length; i++)
+    {
+        players[i].update();
+        players[i].snake.move();
 
-    window.addEventListener( 'resize', onWindowResize, false );
+        if(players[i].snake.sphere.position.z < -height/8 - 10){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.z = height/8 - 10;
+        }
+
+        if(players[i].snake.sphere.position.z > height/8 - 10){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.z = -height/8 - 10;
+        }
+
+        if(players[i].snake.sphere.position.x < -width/8){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.x = width/8;
+        }
+        if(players[i].snake.sphere.position.x > width/8){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.x = -width/8;
+        }
+    }
+
+
+
 
     // raycaster.set( snake.sphere.position, snake.sphere.position);
     //
@@ -88,27 +114,7 @@ function animate() {
     //         console.log("HIT");
     //     }
     // }
-
-    if(snake.sphere.position.z < -height/8 - 10){
-        snake.trail = false;
-        snake.sphere.position.z = height/8 - 10;
-    }
-
-    if(snake.sphere.position.z > height/8 - 10){
-        snake.trail = false;
-        snake.sphere.position.z = -height/8 - 10;
-    }
-
-    if(snake.sphere.position.x < -width/8){
-        snake.trail = false;
-        snake.sphere.position.x = width/8;
-    }
-
-    if(snake.sphere.position.x > width/8){
-        snake.trail = false;
-        snake.sphere.position.x = -width/8;
-    }
-
+    window.addEventListener( 'resize', onWindowResize, false );
     renderer.render(scene, camera);
 };
 
