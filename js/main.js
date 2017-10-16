@@ -94,7 +94,6 @@ function animate() {
             players[i].snake.trail = false;
             players[i].snake.sphere.position.x = width/8;
         }
-
         if(players[i].snake.sphere.position.x > width/8){
             players[i].snake.trail = false;
             players[i].snake.sphere.position.x = -width/8;
