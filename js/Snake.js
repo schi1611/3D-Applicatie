@@ -17,13 +17,16 @@ class Snake{
         this.sphere.position.set(posX, this.posY, posZ);
         scene.add(this.sphere);
         this.oldPos = new THREE.Vector3().copy(this.sphere.position);
+        this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
+        this.oldRot = this.sphere.rotation.y;
+        this.trailArr = [];
 
         //line trail
         //this.materialTrail = new THREE.LineBasicMaterial({ color: 0x0000ff });
         //this.linePoints = [new THREE.Vector3().copy(this.sphere.position)];
     }
 
-    move(){
+    move() {
         this.sphere.position.x -= -Math.sin(this.sphere.rotation.y) * this.speed;
         this.sphere.position.z -= Math.cos(this.sphere.rotation.y) * this.speed;
 
@@ -37,12 +40,30 @@ class Snake{
         // scene.add(this.line);
 
         //3d trail
+        var newRot = this.sphere.rotation.y;
         var newPos = new THREE.Vector3().copy(this.sphere.position);
-        if(this.trail){
-            var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
-            scene.add(trail3d);
+
+        if (this.trail) {
+            if (newRot == this.oldRot) {
+                //remove old and create new
+                var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
+                scene.remove(this.trailArr.pop());
+            } else {
+                //create new
+                var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
+                this.oldestPos = newPos;
+            }
         }
+        else{
+            //end old and start new
+            var trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
+            this.oldestPos = newPos;
+        }
+
+        this.trailArr.push(trail3d);
+        scene.add(trail3d);
         this.oldPos = newPos;
+        this.oldRot = newRot;
         this.trail = true;
     }
     left(){
@@ -68,7 +89,7 @@ class Snake{
     }
 
     noTrail(){
-
+        this.trail = false;
     }
 
     moreJumps(){
@@ -76,7 +97,7 @@ class Snake{
     }
 
     mirroring(){
-
+        this.rotateSpeed *= -1;
     }
 
     faster(){
@@ -88,7 +109,9 @@ class Snake{
     }
 
     eraser(){
-
+        for(var i = 0; i < this.trailArr.length; i++){
+            scene.remove(this.trailArr[i]);
+        }
     }
 
     cylinderMesh(pointX, pointY, material, size) {

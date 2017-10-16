@@ -77,17 +77,17 @@ function animate() {
 
     window.addEventListener( 'resize', onWindowResize, false );
 
-    raycaster.set( snake.sphere.position, snake.sphere.position);
-
-    // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects( cGroup.children );
-
-    if(intersects.length > 0){
-        var intersection = intersects[0];
-        if(intersection.distance < 5){
-            console.log("HIT");
-        }
-    }
+    // raycaster.set( snake.sphere.position, snake.sphere.position);
+    //
+    // // calculate objects intersecting the picking ray
+    // var intersects = raycaster.intersectObjects( cGroup.children );
+    //
+    // if(intersects.length > 0){
+    //     var intersection = intersects[0];
+    //     if(intersection.distance < 5){
+    //         console.log("HIT");
+    //     }
+    // }
 
     if(snake.sphere.position.z < -height/8 - 10){
         snake.trail = false;
