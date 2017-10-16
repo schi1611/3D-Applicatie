@@ -16,28 +16,31 @@ class Snake{
         this.sphere = new THREE.Mesh(new THREE.SphereGeometry( this.size, 32, 32 ), this.material);
         this.sphere.position.set(posX, this.posY, posZ);
         scene.add(this.sphere);
-        this.direction = new THREE.Vector3();
-        this.direction.set(0.1,0,0);
-        this.direction.normalize();
-        this.speedDirection = new THREE.Vector3();
+        this.oldPos = new THREE.Vector3().copy(this.sphere.position);
 
-        //test trail
-        this.materialTrail = new THREE.LineBasicMaterial({ color: 0x0000ff });
-        this.linePoints = [new THREE.Vector3().copy(this.sphere.position)];
+        //line trail
+        //this.materialTrail = new THREE.LineBasicMaterial({ color: 0x0000ff });
+        //this.linePoints = [new THREE.Vector3().copy(this.sphere.position)];
     }
 
     move(){
-        //this.sphere.position.add(this.speedDirection.copy(this.direction).multiplyScalar(this.speed));
         this.sphere.position.x -= -Math.sin(this.sphere.rotation.y) * this.speed;
         this.sphere.position.z -= Math.cos(this.sphere.rotation.y) * this.speed;
-        //test trail
+
+        //line trail
+        //var newPos = new THREE.Vector3().copy(this.sphere.position);
+        //this.linePoints.push(newPos);
+        // scene.remove(this.line);
+        // this.geometry = new THREE.Geometry();
+        // this.geometry.vertices = this.linePoints;
+        // this.line = new THREE.Line(this.geometry, this.materialTrail);
+        // scene.add(this.line);
+
+        //3d trail
         var newPos = new THREE.Vector3().copy(this.sphere.position);
-        this.linePoints.push(newPos);
-        scene.remove(this.line);
-        this.geometry = new THREE.Geometry();
-        this.geometry.vertices = this.linePoints;
-        this.line = new THREE.Line(this.geometry, this.materialTrail);
-        scene.add(this.line);
+        var trail3d = cylinderMesh(this.oldPos, newPos, this.material, this.size);
+        scene.add(trail3d);
+        this.oldPos = newPos;
     }
     left(){
         this.sphere.rotation.y -= this.rotateSpeed;
@@ -85,25 +88,20 @@ class Snake{
 
     }
 }
-
-//trail
-function CustomSinCurve( scale ) {
-
-    THREE.Curve.call( this );
-
-    this.scale = ( scale === undefined ) ? 1 : scale;
-
+function cylinderMesh(pointX, pointY, material, size) {
+    var direction = new THREE.Vector3().subVectors(pointY, pointX);
+    var orientation = new THREE.Matrix4();
+    orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
+    orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
+        0, 0, 1, 0,
+        0, -1, 0, 0,
+        0, 0, 0, 1));
+    var edgeGeometry = new THREE.CylinderGeometry(size, size, direction.length()+1, 8, 1);
+    var edge = new THREE.Mesh(edgeGeometry, material);
+    edge.applyMatrix(orientation);
+    // position based on midpoints
+    edge.position.x = (pointY.x + pointX.x) / 2;
+    edge.position.y = (pointY.y + pointX.y) / 2;
+    edge.position.z = (pointY.z + pointX.z) / 2;
+    return edge;
 }
-
-CustomSinCurve.prototype = Object.create( THREE.Curve.prototype );
-CustomSinCurve.prototype.constructor = CustomSinCurve;
-
-CustomSinCurve.prototype.getPoint = function ( t ) {
-
-    var tx = t * 3 - 1.5;
-    var ty = Math.sin( 2 * Math.PI * t );
-    var tz = 0;
-
-    return new THREE.Vector3( tx, ty, tz ).multiplyScalar( this.scale );
-
-};
