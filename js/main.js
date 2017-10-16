@@ -1,4 +1,4 @@
-var scene, renderer, camera, snake, player;
+var scene, renderer, camera, snake, player, players;
 var height = window.innerHeight;
 var width = window.innerWidth;
 
@@ -66,49 +66,56 @@ function onLoad() {
     snake.faster();
 
     player = new Player(0,snake, new Controls("A", "D", " "));
+    player2 = new Player(1, new Snake(2,2, 0x0000ff), new Controls("J","K", " "));
+    player2.snake.faster();
+    players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
     animate();
 };
 
 function animate() {
     requestAnimationFrame(animate);
-    player.update();
-    snake.move();
+    for(var i = 0; i < players.length; i++)
+    {
+        players[i].update();
+        players[i].snake.move();
 
-    window.addEventListener( 'resize', onWindowResize, false );
+        if(players[i].snake.sphere.position.z < -height/8 - 10){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.z = height/8 - 10;
+        }
 
-    raycaster.set( snake.sphere.position, snake.sphere.position);
+        if(players[i].snake.sphere.position.z > height/8 - 10){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.z = -height/8 - 10;
+        }
 
-    // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects( cGroup.children );
+        if(players[i].snake.sphere.position.x < -width/8){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.x = width/8;
+        }
 
-    if(intersects.length > 0){
-        var intersection = intersects[0];
-        if(intersection.distance < 5){
-            console.log("HIT");
+        if(players[i].snake.sphere.position.x > width/8){
+            players[i].snake.trail = false;
+            players[i].snake.sphere.position.x = -width/8;
         }
     }
 
-    if(snake.sphere.position.z < -height/8 - 10){
-        snake.trail = false;
-        snake.sphere.position.z = height/8 - 10;
-    }
 
-    if(snake.sphere.position.z > height/8 - 10){
-        snake.trail = false;
-        snake.sphere.position.z = -height/8 - 10;
-    }
 
-    if(snake.sphere.position.x < -width/8){
-        snake.trail = false;
-        snake.sphere.position.x = width/8;
-    }
 
-    if(snake.sphere.position.x > width/8){
-        snake.trail = false;
-        snake.sphere.position.x = -width/8;
-    }
-
+    // raycaster.set( snake.sphere.position, snake.sphere.position);
+    //
+    // // calculate objects intersecting the picking ray
+    // var intersects = raycaster.intersectObjects( cGroup.children );
+    //
+    // if(intersects.length > 0){
+    //     var intersection = intersects[0];
+    //     if(intersection.distance < 5){
+    //         console.log("HIT");
+    //     }
+    // }
+    window.addEventListener( 'resize', onWindowResize, false );
     renderer.render(scene, camera);
 };
 
