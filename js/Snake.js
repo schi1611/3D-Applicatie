@@ -38,9 +38,12 @@ class Snake{
 
         //3d trail
         var newPos = new THREE.Vector3().copy(this.sphere.position);
-        var trail3d = cylinderMesh(this.oldPos, newPos, this.material, this.size);
-        scene.add(trail3d);
+        if(this.trail){
+            var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
+            scene.add(trail3d);
+        }
         this.oldPos = newPos;
+        this.trail = true;
     }
     left(){
         this.sphere.rotation.y -= this.rotateSpeed;
@@ -87,8 +90,8 @@ class Snake{
     eraser(){
 
     }
-}
-function cylinderMesh(pointX, pointY, material, size) {
+
+    cylinderMesh(pointX, pointY, material, size) {
     var direction = new THREE.Vector3().subVectors(pointY, pointX);
     var orientation = new THREE.Matrix4();
     orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
@@ -104,4 +107,5 @@ function cylinderMesh(pointX, pointY, material, size) {
     edge.position.y = (pointY.y + pointX.y) / 2;
     edge.position.z = (pointY.z + pointX.z) / 2;
     return edge;
+    }
 }

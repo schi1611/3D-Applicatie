@@ -90,18 +90,22 @@ function animate() {
     }
 
     if(snake.sphere.position.z < -height/8 - 10){
+        snake.trail = false;
         snake.sphere.position.z = height/8 - 10;
     }
 
     if(snake.sphere.position.z > height/8 - 10){
+        snake.trail = false;
         snake.sphere.position.z = -height/8 - 10;
     }
 
     if(snake.sphere.position.x < -width/8){
+        snake.trail = false;
         snake.sphere.position.x = width/8;
     }
 
     if(snake.sphere.position.x > width/8){
+        snake.trail = false;
         snake.sphere.position.x = -width/8;
     }
 
