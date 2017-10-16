@@ -82,10 +82,12 @@ class Snake{
 
     bigger(){
         this.sphere.scale.multiplyScalar(1.5);
+        this.size *= 1.5;
     }
 
     smaller(){
         this.sphere.scale.multiplyScalar((1/1.5));
+        this.size *= (1/1.5);
     }
 
     noTrail(){
