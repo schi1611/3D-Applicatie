@@ -5,7 +5,7 @@ class Snake{
     constructor(posX, posZ, color){
         this.size = 2;
         this.posY = this.size;
-        this.speed = 0.2;
+        this.speed = 0.5;
         this.rotateSpeed = Math.PI * 0.05;
         this.trail = true;
         this.material = new THREE.MeshPhongMaterial({
@@ -13,6 +13,7 @@ class Snake{
             specular: 0x7c7c7c,
             shininess: 10
         });
+        this.cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
         this.sphere = new THREE.Mesh(new THREE.SphereGeometry( this.size, 32, 32 ), this.material);
         this.sphere.position.set(posX, this.posY, posZ);
         scene.add(this.sphere);
@@ -22,6 +23,7 @@ class Snake{
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldRot = this.sphere.rotation.y;
         this.trailArr = [];
+        this.boxArr = [];
 
         //jump
         this.jumping = false;
@@ -58,20 +60,26 @@ class Snake{
                 //remove old and create new
                 var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
+                var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
+                scene.remove(this.boxArr.pop());
             } else {
                 //create new
                 var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
+                var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
                 this.oldestPos = newPos;
             }
         }
         else{
             //end old and start new
             var trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
+            var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
             this.oldestPos = newPos;
         }
 
         this.trailArr.push(trail3d);
         scene.add(trail3d);
+        this.boxArr.push(box);
+        scene.add(box);
         this.oldPos = newPos;
         this.oldRot = newRot;
         this.trail = true;
@@ -144,5 +152,23 @@ class Snake{
     edge.position.y = (pointY.y + pointX.y) / 2;
     edge.position.z = (pointY.z + pointX.z) / 2;
     return edge;
+    }
+    boxMesh(pointX, pointY, material, size) {
+        var direction = new THREE.Vector3().subVectors(pointY, pointX);
+        var orientation = new THREE.Matrix4();
+        orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
+        orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
+            0, 0, 1, 0,
+            0, -1, 0, 0,
+            0, 0, 0, 1));
+        var edgeGeometry = new THREE.BoxGeometry(size, direction.length()+1, size);
+        var edge = new THREE.Mesh(edgeGeometry, material);
+        edge.material.visible = false;
+        edge.applyMatrix(orientation);
+        // position based on midpoints
+        edge.position.x = (pointY.x + pointX.x) / 2;
+        edge.position.y = (pointY.y + pointX.y) / 2;
+        edge.position.z = (pointY.z + pointX.z) / 2;
+        return edge;
     }
 }
