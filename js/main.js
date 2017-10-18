@@ -41,11 +41,12 @@ function onLoad() {
     snake = new Snake(0,0, 0xffff00);
     snake.faster();
 
-    player = new Player(0,snake, new Controls("A", "D", " "));
-    player2 = new Player(1, new Snake(2,2, 0x0000ff), new Controls("J","K", " "));
+    player = new Player(0,snake, new Controls("A", "D", "S"));
+    player2 = new Player(1, new Snake(2,2, 0x0000ff), new Controls("LEFT","RIGHT", " "));
     player2.snake.faster();
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
+    var game = new Game(4,3);
     animate();
 };
 
