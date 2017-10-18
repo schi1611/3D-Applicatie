@@ -10,9 +10,9 @@ class Player {
     update()
     {
         if (this.controls.leftPressed())
-            this.snake.left()
+            this.snake.left();
         if (this.controls.rightPressed())
-            this.snake.right()
+            this.snake.right();
         if (this.controls.jumpPressed())
         {
             console.log("ik spring");

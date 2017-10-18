@@ -1,16 +1,19 @@
 class Game {
     constructor(players,turns){
+        this.controllers = {};
         this.players = players;
         this.turns = turns;
-        var world = "hello world with the number of players : " + this.players + " and lasting: " + this.turns + " turns";
-        document.getElementById("game").innerHTML = world;
+        this.world = "hello world type here the number of players: <input type=\"text\" id='ptext' >";
+        document.getElementById("game").innerHTML = this.world;
+        this.ptext = document.getElementById("ptext");
+        console.log(this.ptext);
     }
-    // startgame()
-    // {
-    //     console.log("lol");
-    // }
-    // setcontrols(left, right, jump)
-    // {
-    //     return new Controls(left,right,jump);
-    // }
+    startgame()
+    {
+        console.log("lol");
+    }
+    setcontrols(left, right, jump)
+    {
+
+    }
 }

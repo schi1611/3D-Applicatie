@@ -7,6 +7,10 @@ class Controls
         this.left = left.charCodeAt(0);
         this.right = right.charCodeAt(0);
         this.jump = jump.charCodeAt(0);
+        if(left === "LEFT")
+            this.left = 37;
+        if (right === "RIGHT")
+            this.right = 39;
         this.keyboard = {};
         this.keyboard[this.left] = false;
         this.keyboard[this.right] = false;
