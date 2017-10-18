@@ -1,4 +1,4 @@
-var scene, renderer, camera, snake, player, players;
+var scene, renderer, camera, snake, player, players, powerUp, longCube;
 var height = window.innerHeight;
 var width = window.innerWidth;
 
@@ -25,40 +25,16 @@ function onLoad() {
     scene.add(ground);
     scene.add(cGroup);
 
-    var lGeometry = new THREE.BoxGeometry(5,10,height/4);
+    var lGeometry = new THREE.BoxGeometry(5,5,5);
     var lMaterial = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-    var longCube = new THREE.Mesh(lGeometry,lMaterial);
+    longCube = new THREE.Mesh(lGeometry,lMaterial);
 
     longCube.position.z = -10;
-    longCube.position.x = -width/8;
+    longCube.position.x = -50;
+    longCube.position.y = 3;
 
 //scene.add(longCube);
     cGroup.add(longCube);
-
-    var clonedLongCube1 = longCube.clone();
-    clonedLongCube1.position.x = width/8;
-
-//scene.add(clonedLongCube);
-    cGroup.add(clonedLongCube1);
-
-    var clonedLongCube2 = longCube.clone();
-    clonedLongCube2.scale.set(1,1,1.4);
-    clonedLongCube2.position.x = 0;
-    clonedLongCube2.rotation.y = -Math.PI / 2;
-    clonedLongCube2.position.z = -height/8 - 10;
-
-
-//scene.add(clonedLongCube);
-    cGroup.add(clonedLongCube2);
-
-    var clonedLongCube3 = longCube.clone();
-    clonedLongCube3.scale.set(1,1,1.4);
-    clonedLongCube3.position.x = 0;
-    clonedLongCube3.rotation.y = -Math.PI / 2;
-    clonedLongCube3.position.z = height/8 - 10;
-
-//scene.add(clonedLongCube);
-    cGroup.add(clonedLongCube3);
 
     addLights();
 
@@ -75,6 +51,29 @@ function onLoad() {
 
 function animate() {
     requestAnimationFrame(animate);
+
+
+    var xd = snake.sphere.position.x - longCube.position.x;
+    var zd = snake.sphere.position.z - longCube.position.z;
+
+    var sumRadius = (snake.size + 2.5);
+    var sqrSumRadius = sumRadius * sumRadius;
+    var distSqr = (xd * xd) + (zd * zd);
+
+    if (distSqr <= sqrSumRadius){console.log("HIT")}
+
+    //raycaster.set( snake.sphere.position, snake.sphere.position);
+    //
+    // // calculate objects intersecting the picking ray
+    // var intersects = raycaster.intersectObjects( cGroup.children );
+    //
+    // if(intersects.length > 0){
+    //     var intersection = intersects[0];
+    //     if(intersection.distance < 3.5){
+    //         console.log("HIT");
+    //     }
+    // }
+
     for(var i = 0; i < players.length; i++)
     {
         players[i].update();
@@ -100,20 +99,6 @@ function animate() {
         }
     }
 
-
-
-
-    // raycaster.set( snake.sphere.position, snake.sphere.position);
-    //
-    // // calculate objects intersecting the picking ray
-    // var intersects = raycaster.intersectObjects( cGroup.children );
-    //
-    // if(intersects.length > 0){
-    //     var intersection = intersects[0];
-    //     if(intersection.distance < 5){
-    //         console.log("HIT");
-    //     }
-    // }
     window.addEventListener( 'resize', onWindowResize, false );
     renderer.render(scene, camera);
 };

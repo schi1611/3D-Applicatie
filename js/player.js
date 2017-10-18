@@ -1,8 +1,8 @@
 class Player {
-    constructor(color, snake, controls)
+    constructor(name, snake, controls)
     {
         var score = 0;
-        this.color = color;
+        this.color = name;
         this.snake = snake;
         this.controls = controls;
     }
