@@ -3,7 +3,7 @@
  */
 class Snake{
     constructor(posX, posZ, color){
-        this.size = 3;
+        this.size = 2;
         this.posY = this.size;
         this.speed = 0.2;
         this.rotateSpeed = Math.PI * 0.05;
@@ -16,35 +16,45 @@ class Snake{
         this.sphere = new THREE.Mesh(new THREE.SphereGeometry( this.size, 32, 32 ), this.material);
         this.sphere.position.set(posX, this.posY, posZ);
         scene.add(this.sphere);
+
+        //trail
         this.oldPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldRot = this.sphere.rotation.y;
         this.trailArr = [];
 
-        //line trail
-        //this.materialTrail = new THREE.LineBasicMaterial({ color: 0x0000ff });
-        //this.linePoints = [new THREE.Vector3().copy(this.sphere.position)];
+        //jump
+        this.jumping = false;
+        this.jumpHeight = this.size*3;
+        this.jumpSinWavePos = 0;
     }
 
     move() {
         this.sphere.position.x -= -Math.sin(this.sphere.rotation.y) * this.speed;
         this.sphere.position.z -= Math.cos(this.sphere.rotation.y) * this.speed;
 
-        //line trail
-        //var newPos = new THREE.Vector3().copy(this.sphere.position);
-        //this.linePoints.push(newPos);
-        // scene.remove(this.line);
-        // this.geometry = new THREE.Geometry();
-        // this.geometry.vertices = this.linePoints;
-        // this.line = new THREE.Line(this.geometry, this.materialTrail);
-        // scene.add(this.line);
+        //jump
+        if(this.jumping){
+            // the last position on the sine wave
+            var lastHeight = this.jumpSinWavePos;
+            // the new position on the sine wave
+            this.jumpSinWavePos += this.speed/(this.size*2);
+            if (this.jumpSinWavePos >= Math.PI){
+                this.sphere.position.y = this.posY;
+                //hit ground set jumping to false
+                this.jumping = false
+            } else{
+                //move along the sine wave
+                this.sphere.position.y -= -(Math.sin(this.jumpSinWavePos) - Math.sin(lastHeight)) * this.jumpHeight;
+            }
+        }
 
         //3d trail
         var newRot = this.sphere.rotation.y;
         var newPos = new THREE.Vector3().copy(this.sphere.position);
 
         if (this.trail) {
-            if (newRot == this.oldRot) {
+            if (newRot == this.oldRot && !this.jumping) {
                 //remove old and create new
                 var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
@@ -77,7 +87,9 @@ class Snake{
     }
 
     jump(){
-
+        //this.spring = true;
+        this.jumping = true;
+        this.jumpSinWavePos = 0;
     }
 
     bigger(){

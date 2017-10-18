@@ -15,7 +15,9 @@ class Player {
             this.snake.right()
         if (this.controls.jumpPressed())
         {
-            console.log("ik spring");
+            if(!this.snake.jumping){
+                this.snake.jump();
+            }
             this.controls.clearJump();
         }
 
