@@ -16,6 +16,8 @@ class Snake{
         this.cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
         this.sphere = new THREE.Mesh(new THREE.SphereGeometry( this.size, 32, 32 ), this.material);
         this.sphere.position.set(posX, this.posY, posZ);
+        this.sphere.receiveShadow = true;
+        this.sphere.castShadow = true;
         scene.add(this.sphere);
         this.powerUp = false;
 
@@ -59,14 +61,12 @@ class Snake{
         if (this.trail) {
             if (newRot == this.oldRot && !this.jumping && !this.powerUp) {
                 //remove old and create new
-                console.log("remove old create new");
                 var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
                 var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
                 scene.remove(this.boxArr.pop());
             } else {
                 //create new
-                console.log("new");
                 var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
                 var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
                 this.oldestPos = newPos;
@@ -74,12 +74,13 @@ class Snake{
         }
         else{
             //end old and start new
-            console.log("end old start new");
             var trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
             var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
             this.oldestPos = newPos;
         }
 
+        trail3d.receiveShadow = true;
+        trail3d.castShadow = true;
         this.trailArr.push(trail3d);
         scene.add(trail3d);
         this.boxArr.push(box);

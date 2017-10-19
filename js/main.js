@@ -49,15 +49,20 @@ function onLoad() {
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    powerUp = new PowerUps(20,20,1,0x0000ff);
+    powerUp = new PowerUps(20,20,4,0xffffff);
     powerUpArr.push(powerUp);
     console.log(powerUp.sort);
 
-    var powerUp2 = new PowerUps(40,40,Math.floor(Math.random()*7)+1,0x00ffff);
+    var powerUp2 = new PowerUps(40,40,3,0xffffff);
     powerUpArr.push(powerUp2);
     console.log(powerUp2.sort);
 
-    game = new Game(4,3);
+    var powerUp3 = new PowerUps(-30,-30,7,0xffffff);
+    powerUpArr.push(powerUp3);
+    console.log(powerUp3.sort);
+
+    game = new Game();
+
     animate();
 };
 
@@ -160,8 +165,22 @@ function animate() {
 
 //voegt lichten toe
 function addLights() {
-    scene.add(new THREE.AmbientLight(0x0d0d0d));
-    scene.add(new THREE.DirectionalLight(0xffffff, 0.5));
+    // scene.add(new THREE.AmbientLight(0x0d0d0d));
+    // var directlight = new THREE.DirectionalLight(0xffffff, 0.5);
+    // scene.add(directlight);
+    ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    light = new THREE.PointLight(0xffffff, 1, height/2);
+    light.position.set(0, 150, -height/4);
+    light.castShadow = true;
+    light.shadow.camera.near = 100;
+    light.shadow.camera.far = height*width;
+    scene.add(light);
+
+    light2 = light.clone();
+    light2.position.set(0,150,height/4);
+    scene.add(light2);
 };
 
 //resizes window after window size changed
