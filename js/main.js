@@ -1,10 +1,11 @@
 var scene, renderer, camera, snake, player, players, powerUp;
 var height = window.innerHeight;
 var width = window.innerWidth;
-
+var game;
 var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
 var powerUpArr = [];
+
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
@@ -42,10 +43,9 @@ function onLoad() {
     snake.faster();
 
     player = new Player(0,snake, new Controls("A", "D", "S"));
-    //player2 = new Player(1, new Snake(2,2, 0x0000ff), new Controls("LEFT","RIGHT", " "));
-    //player2.snake.faster();
-    //players = [player, player2];
-    players = [player];
+    player2 = new Player(1, new Snake(2,2, 0x0000ff), new Controls("LEFT","RIGHT", " "));
+    player2.snake.faster();
+    players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
     powerUp = new PowerUps(20,20,1,0x0000ff);
@@ -56,24 +56,24 @@ function onLoad() {
     powerUpArr.push(powerUp2);
     console.log(powerUp2.sort);
 
-    var game = new Game(4,3);
+    game = new Game(4,3);
     animate();
 };
 
 function animate() {
     requestAnimationFrame(animate);
 
-    //raycaster.set( snake.sphere.position, snake.sphere.position);
-    //
-    // // calculate objects intersecting the picking ray
-    // var intersects = raycaster.intersectObjects( cGroup.children );
-    //
-    // if(intersects.length > 0){
-    //     var intersection = intersects[0];
-    //     if(intersection.distance < 3.5){
-    //         console.log("HIT");
-    //     }
-    // }
+    raycaster.set( snake.sphere.position, snake.sphere.position.clone().normalize());
+
+    // calculate objects intersecting the picking ray
+    var intersects = raycaster.intersectObjects( snake.boxArr  );
+
+    if(intersects.length > 0){
+        var intersection = intersects[0];
+        if(intersection.distance < 3.5){
+            console.log("HIT");
+        }
+    }
 
     for(var i = 0; i < players.length; i++)
     {
@@ -121,7 +121,6 @@ function animate() {
                     powerUpArr.splice(powerUpArr.indexOf(powerUpArr[j]), 1);
                 }
         }
-
 
         players[i].update();
         players[i].snake.move();
