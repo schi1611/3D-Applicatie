@@ -4,7 +4,7 @@
 class PowerUps {
     constructor(xPos, zPos, sort, color) {
 
-        this.size = 5;
+        this.size = 4;
         this.yPos = this.size;
         this.sort = sort;
 
@@ -13,7 +13,7 @@ class PowerUps {
             map: THREE.ImageUtils.loadTexture(this.texture),
             color: color,
             specular: 0x7c7c7c,
-            //ambient: 0x030303,
+            ambient: 0x030303,
             shininess: 4
         });
 
