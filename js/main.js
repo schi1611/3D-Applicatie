@@ -99,8 +99,8 @@ function animate() {
                         break;
                     case 5:
                         //all snake trails removed
-                        snake.eraser();
-                        player2.snake.eraser();
+                        for (var j = 0; j < players.length; j++)
+                            players[j].snake.eraser();
                         break;
                     case 6:
                         players[i].snake.moreJumps();
