@@ -5,6 +5,7 @@ var game;
 var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
 var powerUpArr = [];
+var waitTime = 10000;
 
 
 function onLoad() {
@@ -85,21 +86,27 @@ function animate() {
                 var sqrSumRadius = sumRadius * sumRadius;
                 var distSqr = (xd * xd) + (zd * zd);
 
-
                 if (distSqr <= sqrSumRadius) {
                     switch (powerUpArr[j].sort) {
                         case 1:
                             players[i].snake.bigger();
-                            setTimeout(function(){snake.smaller();}, 3000);
+                            var that = players[i]
+                            setTimeout(function(){that.snake.smaller();}, waitTime);
                             break;
                         case 2:
                             players[i].snake.smaller();
+                            var that = players[i]
+                            setTimeout(function(){that.snake.bigger();}, waitTime);
                             break;
                         case 3:
                             players[i].snake.faster();
+                            var that = players[i]
+                            setTimeout(function(){that.snake.slower();}, waitTime);
                             break;
                         case 4:
                             players[i].snake.slower();
+                            var that = players[i]
+                            setTimeout(function(){that.snake.faster();}, waitTime);
                             break;
                         case 5:
                             //all snake trails removed
@@ -112,6 +119,8 @@ function animate() {
                             break;
                         case 7:
                             players[i].snake.mirroring();
+                            var that = players[i]
+                            setTimeout(function(){that.snake.mirroring();}, waitTime);
                             break;
                         default:
                             break;
