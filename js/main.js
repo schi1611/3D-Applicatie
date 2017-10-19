@@ -6,6 +6,7 @@ var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
 var powerUpArr = [];
 
+
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
     camera.position.set(0, height/3, 50);
@@ -58,17 +59,26 @@ function onLoad() {
 function animate() {
     requestAnimationFrame(animate);
 
-    //raycaster.set( snake.sphere.position, snake.sphere.position);
-    //
-    // // calculate objects intersecting the picking ray
-    // var intersects = raycaster.intersectObjects( cGroup.children );
-    //
-    // if(intersects.length > 0){
-    //     var intersection = intersects[0];
-    //     if(intersection.distance < 3.5){
-    //         console.log("HIT");
-    //     }
-    // }
+    var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
+    var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
+
+    var sumRadius = (snake.size + 2.5);
+    var sqrSumRadius = sumRadius * sumRadius;
+    var distSqr = (xd * xd) + (zd * zd);
+
+    if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh(powerUp.powerUpMesh);}
+
+    raycaster.set( snake.sphere.position, snake.sphere.position.clone().normalize());
+
+    // calculate objects intersecting the picking ray
+    var intersects = raycaster.intersectObjects( snake.boxArr  );
+
+    if(intersects.length > 0){
+        var intersection = intersects[0];
+        if(intersection.distance < 3.5){
+            console.log("HIT");
+        }
+    }
 
     for(var i = 0; i < players.length; i++)
     {
@@ -110,8 +120,7 @@ function animate() {
                         break;
                     default:
                         break;
-                }
-                ;
+                };
 
                 powerUp.removeMesh();
                 powerUpArr.shift();
