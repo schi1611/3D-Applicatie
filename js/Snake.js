@@ -84,12 +84,15 @@ class Snake{
         this.oldRot = newRot;
         this.trail = true;
     }
+
     left(){
         this.sphere.rotation.y -= this.rotateSpeed;
     }
+
     right() {
         this.sphere.rotation.y += this.rotateSpeed;
     }
+
     collision(){
         this.speed = 0;
     }
@@ -153,6 +156,7 @@ class Snake{
     edge.position.z = (pointY.z + pointX.z) / 2;
     return edge;
     }
+
     boxMesh(pointX, pointY, material, size) {
         var direction = new THREE.Vector3().subVectors(pointY, pointX);
         var orientation = new THREE.Matrix4();

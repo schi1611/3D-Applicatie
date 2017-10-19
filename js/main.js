@@ -59,11 +59,11 @@ function animate() {
     var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
     var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
 
-    var sumRadius = (snake.size + 2.5);
+    var sumRadius = (snake.size + powerUp.size);
     var sqrSumRadius = sumRadius * sumRadius;
     var distSqr = (xd * xd) + (zd * zd);
 
-    if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh(powerUp.powerUpMesh);}
+    if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh();}
 
     //raycaster.set( snake.sphere.position, snake.sphere.position);
     //

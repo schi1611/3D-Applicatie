@@ -13,15 +13,14 @@ class PowerUps {
             shininess: 10
         });
 
-        this.powerUpMesh = new THREE.Mesh(new THREE.SphereGeometry(this.yPos, 32, 32), this.material);
+        this.powerUpMesh = new THREE.Mesh(new THREE.SphereGeometry(this.size, 32, 32), this.material);
         this.powerUpMesh.position.set(xPos, this.yPos, zPos);
         scene.add(this.powerUpMesh);
-
     }
 
-        removeMesh(name){
-            scene.remove(name);
-        }
+    removeMesh(){
+        scene.remove(this.powerUpMesh);
+    }
 }
 
 
