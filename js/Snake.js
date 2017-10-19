@@ -17,8 +17,7 @@ class Snake{
         this.sphere = new THREE.Mesh(new THREE.SphereGeometry( this.size, 32, 32 ), this.material);
         this.sphere.position.set(posX, this.posY, posZ);
         scene.add(this.sphere);
-
-        this.erase = false;
+        this.powerUp = false;
 
         //trail
         this.oldPos = new THREE.Vector3().copy(this.sphere.position);
@@ -58,14 +57,16 @@ class Snake{
         var newPos = new THREE.Vector3().copy(this.sphere.position);
 
         if (this.trail) {
-            if (newRot == this.oldRot && !this.jumping && !this.erase) {
+            if (newRot == this.oldRot && !this.jumping && !this.powerUp) {
                 //remove old and create new
+                console.log("remove old create new");
                 var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
                 var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
                 scene.remove(this.boxArr.pop());
             } else {
                 //create new
+                console.log("new");
                 var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
                 var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
                 this.oldestPos = newPos;
@@ -73,6 +74,7 @@ class Snake{
         }
         else{
             //end old and start new
+            console.log("end old start new");
             var trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
             var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
             this.oldestPos = newPos;
@@ -106,13 +108,19 @@ class Snake{
     }
 
     bigger(){
+        this.powerUp = true;
         this.sphere.scale.multiplyScalar(1.5);
         this.size *= 1.5;
+        this.move();
+        this.powerUp = false;
     }
 
     smaller(){
+        this.powerUp = true;
         this.sphere.scale.multiplyScalar((1/1.5));
         this.size *= (1/1.5);
+        this.move();
+        this.powerUp = false;
     }
 
     noTrail(){
@@ -136,12 +144,12 @@ class Snake{
     }
 
     eraser(){
-        this.erase = true;
+        this.powerUp = true;
         this.move();
         for(var i = 0; i < this.trailArr.length; i++){
             scene.remove(this.trailArr[i]);
         }
-        this.erase = false;
+        this.powerUp = false;
     }
 
     cylinderMesh(pointX, pointY, material, size) {
