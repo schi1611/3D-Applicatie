@@ -1,9 +1,10 @@
-var scene, renderer, camera, snake, player, players, powerUp, longCube;
+var scene, renderer, camera, snake, player, players, powerUp;
 var height = window.innerHeight;
 var width = window.innerWidth;
-
+var game;
 var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
+var powerUpArr = [];
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
@@ -46,15 +47,16 @@ function onLoad() {
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    powerUp = new PowerUps(20,20);
+    powerUp = new PowerUps(20,20,Math.floor(Math.random()*8),0x0000ff);
+    powerUpArr.push(powerUp);
+    console.log(powerUp.sort);
 
-    var game = new Game(4,3);
+    game = new Game(4,3);
     animate();
 };
 
 function animate() {
     requestAnimationFrame(animate);
-
 
     var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
     var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
@@ -65,20 +67,65 @@ function animate() {
 
     if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh(powerUp.powerUpMesh);}
 
-    //raycaster.set( snake.sphere.position, snake.sphere.position);
-    //
-    // // calculate objects intersecting the picking ray
-    // var intersects = raycaster.intersectObjects( cGroup.children );
-    //
-    // if(intersects.length > 0){
-    //     var intersection = intersects[0];
-    //     if(intersection.distance < 3.5){
-    //         console.log("HIT");
-    //     }
-    // }
+    raycaster.set( snake.sphere.position, snake.sphere.position.clone().normalize());
+
+    // calculate objects intersecting the picking ray
+    var intersects = raycaster.intersectObjects( snake.boxArr  );
+
+    if(intersects.length > 0){
+        var intersection = intersects[0];
+        if(intersection.distance < 3.5){
+            console.log("HIT");
+        }
+    }
 
     for(var i = 0; i < players.length; i++)
     {
+        if(powerUpArr.length > 0) {
+            var xd = players[i].snake.sphere.position.x - powerUp.powerUpMesh.position.x;
+            var zd = players[i].snake.sphere.position.z - powerUp.powerUpMesh.position.z;
+
+            var sumRadius = (players[i].snake.size + powerUp.size);
+            var sqrSumRadius = sumRadius * sumRadius;
+            var distSqr = (xd * xd) + (zd * zd);
+
+
+            if (distSqr <= sqrSumRadius) {
+                console.log("HIT");
+
+                switch (powerUpArr[0].sort) {
+                    case 1:
+                        players[i].snake.bigger();
+                        break;
+                    case 2:
+                        players[i].snake.smaller();
+                        break;
+                    case 3:
+                        players[i].snake.faster();
+                        break;
+                    case 4:
+                        players[i].snake.slower();
+                        break;
+                    case 5:
+                        //all snake trails removed
+                        snake.eraser();
+                        player2.snake.eraser();
+                        break;
+                    case 6:
+                        players[i].snake.moreJumps();
+                        break;
+                    case 7:
+                        players[i].snake.mirroring();
+                        break;
+                    default:
+                        break;
+                };
+
+                powerUp.removeMesh();
+                powerUpArr.shift();
+            }
+        }
+
         players[i].update();
         players[i].snake.move();
 
@@ -118,4 +165,9 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
+};
+
+//Random numbers for powerUp sort
+function randomPower(){
+    Math.floor(Math.random()*8);
 };
