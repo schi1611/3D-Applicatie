@@ -18,6 +18,8 @@ class Snake{
         this.sphere.position.set(posX, this.posY, posZ);
         scene.add(this.sphere);
 
+        this.erase = false;
+
         //trail
         this.oldPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
@@ -56,7 +58,7 @@ class Snake{
         var newPos = new THREE.Vector3().copy(this.sphere.position);
 
         if (this.trail) {
-            if (newRot == this.oldRot && !this.jumping) {
+            if (newRot == this.oldRot && !this.jumping && !this.erase) {
                 //remove old and create new
                 var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
@@ -134,9 +136,12 @@ class Snake{
     }
 
     eraser(){
+        this.erase = true;
+        this.move();
         for(var i = 0; i < this.trailArr.length; i++){
             scene.remove(this.trailArr[i]);
         }
+        this.erase = false;
     }
 
     cylinderMesh(pointX, pointY, material, size) {
