@@ -25,16 +25,15 @@ function onLoad() {
     scene.add(ground);
     scene.add(cGroup);
 
-    var lGeometry = new THREE.BoxGeometry(5,5,5);
-    var lMaterial = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-    longCube = new THREE.Mesh(lGeometry,lMaterial);
-
-    longCube.position.z = -10;
-    longCube.position.x = -50;
-    longCube.position.y = 3;
-
-//scene.add(longCube);
-    cGroup.add(longCube);
+    // var lGeometry = new THREE.BoxGeometry(5,5,5);
+    // var lMaterial = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
+    // longCube = new THREE.Mesh(lGeometry,lMaterial);
+    //
+    // longCube.position.z = -10;
+    // longCube.position.x = -50;
+    // longCube.position.y = 3;
+    //
+    // scene.add(longCube);
 
     addLights();
 
@@ -46,6 +45,9 @@ function onLoad() {
     player2.snake.faster();
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
+
+    powerUp = new PowerUps(20,20);
+
     var game = new Game(4,3);
     animate();
 };
@@ -54,14 +56,14 @@ function animate() {
     requestAnimationFrame(animate);
 
 
-    var xd = snake.sphere.position.x - longCube.position.x;
-    var zd = snake.sphere.position.z - longCube.position.z;
+    var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
+    var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
 
     var sumRadius = (snake.size + 2.5);
     var sqrSumRadius = sumRadius * sumRadius;
     var distSqr = (xd * xd) + (zd * zd);
 
-    if (distSqr <= sqrSumRadius){console.log("HIT")}
+    if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh(powerUp.powerUpMesh);}
 
     //raycaster.set( snake.sphere.position, snake.sphere.position);
     //
