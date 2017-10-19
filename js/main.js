@@ -6,6 +6,7 @@ var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
 var powerUpArr = [];
 
+
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
     camera.position.set(0, height/3, 50);
@@ -57,7 +58,7 @@ function onLoad() {
 
 function animate() {
     requestAnimationFrame(animate);
-    
+
     var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
     var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
 
