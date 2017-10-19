@@ -60,7 +60,8 @@ function onLoad() {
     powerUpArr.push(powerUp3);
     console.log(powerUp3.sort);
 
-    game = new Game(4,3);
+    game = new Game();
+
     animate();
 };
 
