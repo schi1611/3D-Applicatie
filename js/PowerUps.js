@@ -17,28 +17,13 @@ class PowerUps {
         this.powerUpMesh.position.set(xPos, this.yPos, zPos);
         scene.add(this.powerUpMesh);
 
-
     }
+
+        removeMesh(name){
+            scene.remove(name);
+        }
 }
 
-    /*function location() {
 
-        var x = document.body.offsetHeight-PowerUps.clientHeight;
-        var z = document.body.offsetWidth-PowerUps.clientWidth;
-        var xPos = Math.floor(Math.random()*x);
-        var zPos = Math.floor(Math.random()*y);
-    }
 
-    function remove() {
 
-    }
-
-}
-
-function render() {
-    requestAnimationFrame(render);
-
-    renderer.render(scene,camera);
-    }
-
-render();*/
