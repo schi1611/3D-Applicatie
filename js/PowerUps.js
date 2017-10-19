@@ -2,13 +2,14 @@
  * Created by Jeltje on 10-10-2017.
  */
 class PowerUps {
-    constructor(xPos, zPos) {
+    constructor(xPos, zPos, sort, color) {
 
         this.size = 3;
         this.yPos = this.size;
+        this.sort = sort;
 
         this.material = new THREE.MeshPhongMaterial({
-            color: 0xFFFFFF,
+            color: color,
             specular: 0x7c7c7c,
             shininess: 10
         });

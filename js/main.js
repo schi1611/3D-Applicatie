@@ -1,9 +1,10 @@
-var scene, renderer, camera, snake, player, players, powerUp, longCube;
+var scene, renderer, camera, snake, player, players, powerUp;
 var height = window.innerHeight;
 var width = window.innerWidth;
 
 var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
+var powerUpArr = [];
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
@@ -46,7 +47,9 @@ function onLoad() {
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    powerUp = new PowerUps(20,20);
+    powerUp = new PowerUps(20,20,Math.floor(Math.random()*8),0x0000ff);
+    powerUpArr.push(powerUp);
+    console.log(powerUp.sort);
 
     var game = new Game(4,3);
     animate();
@@ -55,7 +58,7 @@ function onLoad() {
 function animate() {
     requestAnimationFrame(animate);
 
-
+if(powerUpArr.length > 0) {
     var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
     var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
 
@@ -63,7 +66,43 @@ function animate() {
     var sqrSumRadius = sumRadius * sumRadius;
     var distSqr = (xd * xd) + (zd * zd);
 
-    if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh();}
+
+    if (distSqr <= sqrSumRadius) {
+        console.log("HIT");
+
+        switch (powerUpArr[0].sort) {
+            case 1:
+                snake.bigger();
+                break;
+            case 2:
+                snake.smaller();
+                break;
+            case 3:
+                snake.faster();
+                break;
+            case 4:
+                snake.slower();
+                break;
+            case 5:
+                //all snake trails removed
+                snake.eraser();
+                player2.snake.eraser();
+                break;
+            case 6:
+                snake.moreJumps();
+                break;
+            case 7:
+                snake.mirroring();
+                break;
+            default:
+                break;
+        }
+        ;
+
+        powerUp.removeMesh();
+        powerUpArr.shift();
+    }
+}
 
     //raycaster.set( snake.sphere.position, snake.sphere.position);
     //
@@ -118,4 +157,9 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
+};
+
+//Random numbers for powerUp sort
+function randomPower(){
+    Math.floor(Math.random()*8);
 };
