@@ -1,7 +1,7 @@
 var scene, renderer, camera, snake, player, players, powerUp, longCube;
 var height = window.innerHeight;
 var width = window.innerWidth;
-
+var game;
 var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
 
@@ -48,22 +48,12 @@ function onLoad() {
 
     powerUp = new PowerUps(20,20);
 
-    var game = new Game(4,3);
+    game = new Game(4,3);
     animate();
 };
 
 function animate() {
     requestAnimationFrame(animate);
-
-
-    var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
-    var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
-
-    var sumRadius = (snake.size + 2.5);
-    var sqrSumRadius = sumRadius * sumRadius;
-    var distSqr = (xd * xd) + (zd * zd);
-
-    if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh(powerUp.powerUpMesh);}
 
     //raycaster.set( snake.sphere.position, snake.sphere.position);
     //
@@ -79,6 +69,15 @@ function animate() {
 
     for(var i = 0; i < players.length; i++)
     {
+        var xd = players[i].snake.sphere.position.x - powerUp.powerUpMesh.position.x;
+        var zd = players[i].snake.sphere.position.z - powerUp.powerUpMesh.position.z;
+
+        var sumRadius = (players[i].snake.size + 2.5);
+        var sqrSumRadius = sumRadius * sumRadius;
+        var distSqr = (xd * xd) + (zd * zd);
+
+        if (distSqr <= sqrSumRadius){console.log("HIT"); powerUp.removeMesh(powerUp.powerUpMesh);}
+
         players[i].update();
         players[i].snake.move();
 
