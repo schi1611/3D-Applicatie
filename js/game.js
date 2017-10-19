@@ -1,14 +1,12 @@
 
 class Game {
-    constructor(players,turns){
+    constructor(){
         this.controllers = {};
-        this.players = players;
-        this.turns = turns;
+        this.players;
+        this.turns;
         this.world = "Hello World, type here the number of players: <input required type=\"number\" min=\"2\" max=\"8\" value=\"2\" id=\"ptext\" > " +
-            "<input type='button' value='Everdien' onclick='getid()'>";
+            "<input type='button' value='Everdien' onclick='getText()'>";
         document.getElementById("game").innerHTML = this.world;
-
-        console.log(this.ptext);
     }
     startgame()
     {
@@ -26,10 +24,25 @@ class Game {
         if (ptext < 2)
             ptext = 2;
         console.log(ptext);
+        this.players = ptext;
+        console.log(this.players);
+        var playerfield = "";
+        for (var i = 0; i < ptext; i++)
+        {
+            playerfield += "<p>Player" + (i+1)+ " <input type='text' value='left' id = 'player" + (i+1) + "' > " +
+                "<input type='text' value='right' id = 'player\" + (i + 1) + \"' >" +
+                "<input type='text' value='jump' id = 'player\" + (i + 1) + \"' > <br>"
+        }
+        document.getElementById("players").innerHTML = playerfield + "<input type='button' value='okay' onclick='alert(\"Tom is dik\")'> <br> ";
     }
 
 }
 
-function getid(){
+function getText(){
     game.gettext();
+}
+
+function setControls()
+{
+    game.setcontrols(left,right,jump);
 }
