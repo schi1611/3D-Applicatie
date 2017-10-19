@@ -57,7 +57,7 @@ function onLoad() {
 
 function animate() {
     requestAnimationFrame(animate);
-
+    
     var xd = snake.sphere.position.x - powerUp.powerUpMesh.position.x;
     var zd = snake.sphere.position.z - powerUp.powerUpMesh.position.z;
 
