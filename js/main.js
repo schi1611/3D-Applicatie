@@ -49,25 +49,33 @@ function onLoad() {
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    powerUp = new PowerUps(20,20,4,0xffffff);
+    powerUp = new PowerUps(20,20,1,0xffffff);
     powerUpArr.push(powerUp);
     console.log(powerUp.sort);
 
-    var powerUp2 = new PowerUps(40,40,3,0xffffff);
+    var powerUp2 = new PowerUps(40,40,2,0xffffff);
     powerUpArr.push(powerUp2);
     console.log(powerUp2.sort);
 
-    var powerUp3 = new PowerUps(-30,-30,7,0xffffff);
+    var powerUp3 = new PowerUps(-30,-30,3,0xffffff);
     powerUpArr.push(powerUp3);
     console.log(powerUp3.sort);
 
-    var powerUp4 = new PowerUps(-50,-50,2,0xffffff);
+    var powerUp4 = new PowerUps(-50,-50,4,0xffffff);
     powerUpArr.push(powerUp4);
     console.log(powerUp4.sort);
 
-    var powerUp5 = new PowerUps(50,50,1,0xffffff);
+    var powerUp5 = new PowerUps(50,50,5,0xffffff);
     powerUpArr.push(powerUp5);
     console.log(powerUp5.sort);
+
+    var powerUp6 = new PowerUps(100,100,6,0xffffff);
+    powerUpArr.push(powerUp6);
+    console.log(powerUp6.sort);
+
+    var powerUp7 = new PowerUps(-100,-100,7,0xffffff);
+    powerUpArr.push(powerUp7);
+    console.log(powerUp7.sort);
 
     game = new Game();
 
@@ -83,14 +91,19 @@ function animate() {
     speedx = -Math.sin(snake.sphere.rotation.y) * snake.speed;
     speedz = Math.cos(snake.sphere.rotation.y) * snake.speed;
 
-    raycaster.set( snake.sphere.position, new THREE.Vector3(speedx,0,speedz).normalize());
+    var newPos = new THREE.Vector3(snake.sphere.position.x, snake.sphere.position.y, snake.sphere.position.z);
+    newPos.x = -Math.sin(snake.sphere.rotation.y) * snake.speed;
+    newPos.z = Math.cos(snake.sphere.rotation.y) * snake.speed;
+
+    raycaster.set( newPos, new THREE.Vector3(speedx,0,speedz).normalize());
 
     // calculate objects intersecting the picking ray
     var intersects = raycaster.intersectObjects( snake.boxArr );
 
     if(intersects.length > 0){
         var intersection = intersects[0];
-        if(intersection.distance < 3.5){
+        //console.log("intersects found");
+        if(intersection.distance < 1.5){
             console.log("HIT");
         }
     }
