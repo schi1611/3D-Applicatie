@@ -17,13 +17,66 @@
         <script type="text/javascript" src="js/PowerUps.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+
     </head>
-    <body onload="onLoad()">
+    <body>
         <div id="canvas">
-            <div id="game">
+            <div id="game"></div>
+            <div id="players"></div>
+
+            <div id="overlay">
+                <h1 id="gameTitle">Achtung, die Kurve!</h1>
+                <button type="button" id="playButton" onclick="startOff()">Play</button>
             </div>
-            <div id="players">
+
+            <div id="overlay2">
+                <h1 id="paused">Paused</h1>
+                <div id="center">
+                    <button type="button" id="continue" onclick="pauseOff()">Continue</button></br></br>
+                    <button type="button" id="reset" onclick="location.reload()">Reset</button>
+                </div>
             </div>
+
+            <button type="button" id="pauseBtn" onclick="pauseOn()">Pause</button>
+
+        <script>
+
+            document.body.onload = function() {
+                onLoad();
+                startOn();
+            };
+
+            function startOn() {
+                document.getElementById("overlay").style.display = "block";
+            }
+
+            function startOff() {
+                document.getElementById("overlay").style.display = "none";
+
+                for(var i = 0; i < players.length; i++) {
+                    players[i].snake.speed = 0.5;
+                }
+            }
+
+            function pauseOn(){
+                document.getElementById("overlay2").style.display = "block";
+
+                for(var i = 0; i < players.length; i++) {
+                    players[i].snake.lastSpeed = players[i].snake.speed;
+                    players[i].snake.speed = 0;
+                }
+            }
+
+            function pauseOff(){
+                document.getElementById("overlay2").style.display = "none";
+
+                for(var i = 0; i < players.length; i++) {
+                    players[i].snake.speed = players[i].snake.lastSpeed;
+                }
+            }
+
+        </script>
+
         </div>
     </body>
 <script>
