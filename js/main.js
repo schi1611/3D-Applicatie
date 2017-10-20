@@ -64,7 +64,7 @@ function onLoad() {
     var powerUp4 = new PowerUps();
     powerUpArr.push(powerUp4);
     console.log(powerUp4.sort, powerUp4.randomX, powerUp4.randomZ);
-    
+
     var powerUp5 = new PowerUps();
     powerUpArr.push(powerUp5);
     console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
