@@ -2,9 +2,11 @@
  * Created by EverdienvanderWerff on 10-10-2017.
  */
 class Snake{
-    constructor(posX, posZ, color){
+    constructor(color){
         this.size = 2;
+        this.posX = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random snake x position
         this.posY = this.size;
+        this.posZ = this.randomZ = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
         this.speed = 0.5;
         this.rotateSpeed = Math.PI * 0.05;
         this.trail = true;
@@ -15,7 +17,8 @@ class Snake{
         });
         this.cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
         this.sphere = new THREE.Mesh(new THREE.SphereGeometry( this.size, 32, 32 ), this.material);
-        this.sphere.position.set(posX, this.posY, posZ);
+        this.sphere.position.set(this.posX, this.posY, this.posZ);
+        this.sphere.rotation.y = Math.floor(Math.random() * ( 2*Math.PI ))  ;
         this.sphere.receiveShadow = true;
         this.sphere.castShadow = true;
         scene.add(this.sphere);
