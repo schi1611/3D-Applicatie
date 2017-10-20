@@ -61,6 +61,14 @@ function onLoad() {
     powerUpArr.push(powerUp3);
     console.log(powerUp3.sort);
 
+    var powerUp4 = new PowerUps(-50,-50,2,0xffffff);
+    powerUpArr.push(powerUp4);
+    console.log(powerUp4.sort);
+
+    var powerUp5 = new PowerUps(50,50,1,0xffffff);
+    powerUpArr.push(powerUp5);
+    console.log(powerUp5.sort);
+
     game = new Game();
 
     animate();
@@ -69,10 +77,16 @@ function onLoad() {
 function animate() {
     requestAnimationFrame(animate);
 
-    raycaster.set( snake.sphere.position, snake.sphere.position.clone().normalize());
+    var speedx;
+    var speedz;
+
+    speedx = -Math.sin(snake.sphere.rotation.y) * snake.speed;
+    speedz = Math.cos(snake.sphere.rotation.y) * snake.speed;
+
+    raycaster.set( snake.sphere.position, new THREE.Vector3(speedx,0,speedz).normalize());
 
     // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects( snake.boxArr  );
+    var intersects = raycaster.intersectObjects( snake.boxArr );
 
     if(intersects.length > 0){
         var intersection = intersects[0];
