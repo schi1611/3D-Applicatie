@@ -49,25 +49,25 @@ function onLoad() {
     players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    powerUp = new PowerUps(20,20,1,0xffffff);
+    powerUp = new PowerUps();
     powerUpArr.push(powerUp);
-    console.log(powerUp.sort);
+    console.log(powerUp.sort, powerUp.randomX, powerUp.randomZ);
 
-    var powerUp2 = new PowerUps(40,40,2,0xffffff);
+    var powerUp2 = new PowerUps();
     powerUpArr.push(powerUp2);
-    console.log(powerUp2.sort);
+    console.log(powerUp2.sort, powerUp2.randomX, powerUp2.randomZ);
 
-    var powerUp3 = new PowerUps(-30,-30,3,0xffffff);
+    var powerUp3 = new PowerUps();
     powerUpArr.push(powerUp3);
-    console.log(powerUp3.sort);
+    console.log(powerUp3.sort, powerUp3.randomX, powerUp3.randomZ);
 
-    var powerUp4 = new PowerUps(-50,-50,4,0xffffff);
+    var powerUp4 = new PowerUps();
     powerUpArr.push(powerUp4);
-    console.log(powerUp4.sort);
+    console.log(powerUp4.sort, powerUp4.randomX, powerUp4.randomZ);
 
-    var powerUp5 = new PowerUps(50,50,5,0xffffff);
+    var powerUp5 = new PowerUps();
     powerUpArr.push(powerUp5);
-    console.log(powerUp5.sort);
+    console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
 
     var powerUp6 = new PowerUps(100,100,6,0xffffff);
     powerUpArr.push(powerUp6);
