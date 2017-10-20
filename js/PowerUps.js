@@ -6,11 +6,13 @@ class PowerUps {
 
         this.size = 4;
         this.yPos = this.size;
-        this.sort = Math.floor(Math.random()*7)+1;
+        this.sort = Math.floor(Math.random()*7)+1; //random powerUp number
+        this.randomX = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random powerUp x position
+        this.randomZ = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random powerUp z position
+
+        //Examples
         //Math.random() * (max - min) + min;
         //Math.floor(Math.random() * 201) - 100;
-        this.randomX = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ;
-        this.randomZ = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ;
 
         this.texture = 'img/'+this.sort+'.jpg';
         this.material = new THREE.MeshPhongMaterial({

@@ -28,16 +28,6 @@ function onLoad() {
     scene.add(ground);
     scene.add(cGroup);
 
-    // var lGeometry = new THREE.BoxGeometry(5,5,5);
-    // var lMaterial = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-    // longCube = new THREE.Mesh(lGeometry,lMaterial);
-    //
-    // longCube.position.z = -10;
-    // longCube.position.x = -50;
-    // longCube.position.y = 3;
-    //
-    // scene.add(longCube);
-
     addLights();
 
     snake = new Snake(0,0, 0xffff00);
@@ -190,11 +180,8 @@ function animate() {
     renderer.render(scene, camera);
 };
 
-//voegt lichten toe
+//Adds lights to scene
 function addLights() {
-    // scene.add(new THREE.AmbientLight(0x0d0d0d));
-    // var directlight = new THREE.DirectionalLight(0xffffff, 0.5);
-    // scene.add(directlight);
     ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
@@ -210,15 +197,10 @@ function addLights() {
     scene.add(light2);
 };
 
-//resizes window after window size changed
+//Resizes window after window size changed
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-};
-
-//Random numbers for powerUp sort
-function randomPower(){
-    Math.floor(Math.random()*7)+1;
 };
