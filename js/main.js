@@ -59,13 +59,13 @@ function onLoad() {
     powerUpArr.push(powerUp5);
     console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
 
-    var powerUp6 = new PowerUps(100,100,6,0xffffff);
+    var powerUp6 = new PowerUps();
     powerUpArr.push(powerUp6);
-    console.log(powerUp6.sort);
+    console.log(powerUp6.sort, powerUp6.randomX, powerUp6.randomZ);
 
-    var powerUp7 = new PowerUps(-100,-100,7,0xffffff);
+    var powerUp7 = new PowerUps();
     powerUpArr.push(powerUp7);
-    console.log(powerUp7.sort);
+    console.log(powerUp7.sort, powerUp7.randomX, powerUp7.randomZ);
 
     game = new Game();
 
