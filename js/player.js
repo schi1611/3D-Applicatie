@@ -2,7 +2,7 @@ class Player {
     constructor(name, snake, controls)
     {
         var score = 0;
-        this.color = name;
+        this.name = name;
         this.snake = snake;
         this.controls = controls;
     }
