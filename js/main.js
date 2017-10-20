@@ -64,10 +64,18 @@ function onLoad() {
     var powerUp4 = new PowerUps();
     powerUpArr.push(powerUp4);
     console.log(powerUp4.sort, powerUp4.randomX, powerUp4.randomZ);
-
+    
     var powerUp5 = new PowerUps();
     powerUpArr.push(powerUp5);
     console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
+
+    var powerUp6 = new PowerUps(100,100,6,0xffffff);
+    powerUpArr.push(powerUp6);
+    console.log(powerUp6.sort);
+
+    var powerUp7 = new PowerUps(-100,-100,7,0xffffff);
+    powerUpArr.push(powerUp7);
+    console.log(powerUp7.sort);
 
     game = new Game();
 
@@ -83,14 +91,19 @@ function animate() {
     speedx = -Math.sin(snake.sphere.rotation.y) * snake.speed;
     speedz = Math.cos(snake.sphere.rotation.y) * snake.speed;
 
-    raycaster.set( snake.sphere.position, new THREE.Vector3(speedx,0,speedz).normalize());
+    var newPos = new THREE.Vector3(snake.sphere.position.x, snake.sphere.position.y, snake.sphere.position.z);
+    newPos.x = -Math.sin(snake.sphere.rotation.y) * snake.speed;
+    newPos.z = Math.cos(snake.sphere.rotation.y) * snake.speed;
+
+    raycaster.set( newPos, new THREE.Vector3(speedx,0,speedz).normalize());
 
     // calculate objects intersecting the picking ray
     var intersects = raycaster.intersectObjects( snake.boxArr );
 
     if(intersects.length > 0){
         var intersection = intersects[0];
-        if(intersection.distance < 3.5){
+        //console.log("intersects found");
+        if(intersection.distance < 1.5){
             console.log("HIT");
         }
     }
