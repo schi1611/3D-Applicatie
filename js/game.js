@@ -1,4 +1,6 @@
-
+/**
+ * Created by Leon on 17-10-2017.
+ */
 class Game {
     constructor(){
         this.controllers = {};
@@ -10,7 +12,7 @@ class Game {
     }
     startgame()
     {
-        console.log("lol");
+
     }
     setcontrols()
     {
@@ -18,7 +20,8 @@ class Game {
         for (var i = 0; i < this.players; i++)
         {
             playercontrols = document.getElementsByName("player" + (i+1));
-            // Hier moet iets gebeuren dat ik het kan teruggeven aan Main.js /return de lijst van controls denk ik.
+            var tempcontrols = new Controls(playercontrols[0].value,playercontrols[1].value,playercontrols[2].value );
+            this.controllers[i] = tempcontrols;
         }
     }
     gettext()
@@ -32,7 +35,7 @@ class Game {
         var playerfield = "";
         for (var i = 0; i < ptext; i++)
         {
-            playerfield += "<p>Player" + (i+1)+ " <input type='text' value='left' name= 'player" + (i+1) + "' > " +
+            playerfield += "<p>Player " + (i+1)+ " <input type='text' value='left' name= 'player" + (i+1) + "' > " +
                 "<input type='text' value='right' name= 'player" + (i + 1) + "' >" +
                 "<input type='text' value='jump' name='player" + (i + 1) + "' > <br>"
         }
