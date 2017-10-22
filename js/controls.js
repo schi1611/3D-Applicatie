@@ -4,9 +4,9 @@
 class Controls
 {
     constructor (left,right,jump){
-        this.left = left.charCodeAt(0);
-        this.right = right.charCodeAt(0);
-        this.jump = jump.charCodeAt(0);
+        this.left = left.toUpperCase().charCodeAt(0);
+        this.right = right.toUpperCase().charCodeAt(0);
+        this.jump = jump.toUpperCase().charCodeAt(0);
         if(left === "LEFT")
             this.left = 37;
         if (right === "RIGHT")

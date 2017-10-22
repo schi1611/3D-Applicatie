@@ -1,4 +1,4 @@
-var scene, renderer, camera, snake, player, players, powerUp;
+var scene, renderer, camera, snake, player, players = [], powerUp;
 var height = window.innerHeight;
 var width = window.innerWidth;
 var game;
@@ -7,6 +7,43 @@ var cGroup = new THREE.Group();
 var powerUpArr = [];
 var waitTime = 10000;
 
+function collision(speedx, speedz, _line, i) {
+    if (line) {
+        scene.remove(_line);
+    }
+
+    // Draw a line from pointA in the given direction at distance 100
+    var pointA = newPos;
+    var direction = new THREE.Vector3(speedx,0,speedz).normalize();
+    direction = new THREE.Vector3().multiplyVectors(direction, new THREE.Vector3(-1,0,-1));
+
+    var distance = 1; // at what distance to determine pointB
+
+    var pointB = new THREE.Vector3();
+    pointB.addVectors ( pointA, direction.multiplyScalar( distance ) );
+
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push( pointA );
+    geometry.vertices.push( pointB );
+    var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+    _line = new THREE.Line( geometry, material );
+    scene.add( _line );
+
+    raycaster.set( newPos, direction);
+
+    // calculate objects intersecting the picking ray
+    var intersects = raycaster.intersectObjects( players[i].snake.boxArr );
+
+    if(intersects.length > 0){
+        var intersection = intersects[0];
+        console.log("intersects found");
+        if(intersection.distance < 1){
+            players[i].snake.collision();
+        }
+    }
+
+    return _line;
+}
 
 function onLoad() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
@@ -30,13 +67,13 @@ function onLoad() {
 
     addLights();
 
-    snake = new Snake(0xffff00);
-    snake.faster();
+    //snake = new Snake(0xffff00);
+    //snake.faster();
 
-    player = new Player(0,snake, new Controls("A", "D", "S"));
-    player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
-    player2.snake.faster();
-    players = [player, player2];
+    //player = new Player(0,snake, new Controls("A", "D", "S"));
+    //player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
+    //player2.snake.faster();
+    //players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
     powerUp = new PowerUps();
@@ -69,7 +106,7 @@ function onLoad() {
 
     game = new Game();
 
-    animate();
+    //animate();
 };
 
 var line = undefined;
@@ -78,67 +115,30 @@ var line3 = undefined;
 
 function animate() {
     requestAnimationFrame(animate);
+    for (var i = 0; i < players[i].length; i++) {
 
-    var speedx;
-    var speedz;
+        var speedx;
+        var speedz;
 
-    var newPos = new THREE.Vector3(snake.sphere.position.x, snake.sphere.position.y, snake.sphere.position.z);
-    newPos.x -= -Math.sin(snake.sphere.rotation.y) * snake.speed;
-    newPos.z -= Math.cos(snake.sphere.rotation.y) * snake.speed;
+        var newPos = new THREE.Vector3(players[i].snake.sphere.position.x, players[i].snake.sphere.position.y, players[i].snake.sphere.position.z);
+        newPos.x -= -Math.sin(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
+        newPos.z -= Math.cos(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
 
-    function collision(speedx, speedz, _line) {
-        if (line) {
-            scene.remove(_line);
-        }
+        speedx = -Math.sin(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
+        speedz = Math.cos(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
 
-        // Draw a line from pointA in the given direction at distance 100
-        var pointA = newPos;
-        var direction = new THREE.Vector3(speedx,0,speedz).normalize();
-        direction = new THREE.Vector3().multiplyVectors(direction, new THREE.Vector3(-1,0,-1));
+        line = collision(speedx, speedz, linem, i);
 
-        var distance = 1; // at what distance to determine pointB
+        speedx = -Math.sin(players[i].snake.sphere.rotation.y + 0.8) * players[i].snake.speed;
+        speedz = Math.cos(players[i].snake.sphere.rotation.y + 0.8) * players[i].snake.speed;
 
-        var pointB = new THREE.Vector3();
-        pointB.addVectors ( pointA, direction.multiplyScalar( distance ) );
+        line2 = collision(speedx, speedz, line2, i);
 
-        var geometry = new THREE.Geometry();
-        geometry.vertices.push( pointA );
-        geometry.vertices.push( pointB );
-        var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
-        _line = new THREE.Line( geometry, material );
-        scene.add( _line );
+        speedx = -Math.sin(players[i].snake.sphere.rotation.y - 0.8) * players[i].snake.speed;
+        speedz = Math.cos(players[i].snake.sphere.rotation.y - 0.8) * players[i].snake.speed;
 
-        raycaster.set( newPos, direction);
-
-        // calculate objects intersecting the picking ray
-        var intersects = raycaster.intersectObjects( snake.boxArr );
-
-        if(intersects.length > 0){
-            var intersection = intersects[0];
-            console.log("intersects found");
-            if(intersection.distance < 1){
-                snake.collision();
-            }
-        }
-
-        return _line;
+        line3 = collision(speedx, speedz, line3, i);
     }
-
-    speedx = -Math.sin(snake.sphere.rotation.y) * snake.speed;
-    speedz = Math.cos(snake.sphere.rotation.y) * snake.speed;
-
-    line = collision(speedx, speedz, line);
-
-    speedx = -Math.sin(snake.sphere.rotation.y+0.8) * snake.speed;
-    speedz = Math.cos(snake.sphere.rotation.y+0.8) * snake.speed;
-
-    line2 = collision(speedx, speedz, line2);
-
-    speedx = -Math.sin(snake.sphere.rotation.y-0.8) * snake.speed;
-    speedz = Math.cos(snake.sphere.rotation.y-0.8) * snake.speed;
-
-    line3 = collision(speedx, speedz, line3);
-
 
     for(var i = 0; i < players.length; i++)
     {

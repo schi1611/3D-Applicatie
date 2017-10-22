@@ -5,7 +5,7 @@ class Game {
     constructor(){
         this.controllers = {};
         this.playercolors = {};
-        this.players = {};
+        this.players = [];
         this.totalplayers;
         this.turns;
         this.colors = ["red", "blue", "yellow", "green", "pink", "black", "white"];
@@ -18,9 +18,13 @@ class Game {
     {
         for (var i = 0; i < this.totalplayers; i++)
         {
-            this.players[i] = new Player(i+1, new Snake(this.playercolors[i]), this.controllers[i]);
+            this.players.push(new Player(i+1, new Snake(this.playercolors[i]), this.controllers[i]));
+            this.players[i].snake.faster();
         }
         players = this.players;
+        animate();
+        document.getElementById("players").style.display = "none";
+        document.getElementById("game").style.display = "none";
     }
     setcontrols()
     {
@@ -67,6 +71,10 @@ class Game {
         }
         document.getElementById("players").innerHTML = playerfield + "<input type='button' value='okay' onclick='setControls()'> <br> ";
     }
+    resetGame()
+    {
+
+    }
 
 }
 
@@ -78,4 +86,5 @@ function setControls()
 {
     game.setcontrols();
     game.setcolors();
+    game.startgame();
 }
