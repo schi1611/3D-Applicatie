@@ -1,13 +1,13 @@
-var scene, renderer, camera, snake, player, players = [], powerUp;
-var height = window.innerHeight;
-var width = window.innerWidth;
-var game;
-var raycaster = new THREE.Raycaster();
-var cGroup = new THREE.Group();
-var powerUpArr = [];
-var waitTime = 10000;
-var allTrails = [];
-var placePowerUp = false;
+let scene, renderer, camera, player, players = [];
+let height = window.innerHeight;
+let width = window.innerWidth;
+let game;
+let raycaster = new THREE.Raycaster();
+let cGroup = new THREE.Group();
+let powerUpArr = [];
+let waitTime = 10000;
+let allTrails = [];
+//let placePowerUp = false;
 
 function collision(speedx, speedz, _line, i, newPos) {
     if (line) {
@@ -15,29 +15,29 @@ function collision(speedx, speedz, _line, i, newPos) {
     }
 
     // Draw a line from pointA in the given direction at distance 100
-    var pointA = newPos;
-    var direction = new THREE.Vector3(speedx,0,speedz).normalize();
+    let pointA = newPos;
+    let direction = new THREE.Vector3(speedx,0,speedz).normalize();
     direction = new THREE.Vector3().multiplyVectors(direction, new THREE.Vector3(-1,0,-1));
 
-    var distance = 1; // at what distance to determine pointB
+    let distance = 1; // at what distance to determine pointB
 
-    var pointB = new THREE.Vector3();
+    let pointB = new THREE.Vector3();
     pointB.addVectors ( pointA, direction.multiplyScalar( distance ) );
 
-    var geometry = new THREE.Geometry();
+    let geometry = new THREE.Geometry();
     geometry.vertices.push( pointA );
     geometry.vertices.push( pointB );
-    var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+    let material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
     _line = new THREE.Line( geometry, material );
     scene.add( _line );
 
     raycaster.set( newPos, direction);
 
     // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects( allTrails );
+    let intersects = raycaster.intersectObjects( allTrails );
 
     if(intersects.length > 0){
-        var intersection = intersects[0];
+        let intersection = intersects[0];
         console.log("intersects found");
         if(intersection.distance < 1){
             players[i].snake.collision();
@@ -59,10 +59,10 @@ function onLoad() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMapSoft = true;
     renderer.setClearColor(0x000000, 1);
-    var canvasContainer = document.getElementById('canvas');
+    let canvasContainer = document.getElementById('canvas');
     canvasContainer.appendChild(renderer.domElement);
 
-    var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry(width/4,height/4,2,2), new THREE.MeshPhongMaterial( { color: 0xf0f0f0 } ));
+    let ground = new THREE.Mesh( new THREE.PlaneBufferGeometry(width/4,height/4,2,2), new THREE.MeshPhongMaterial( { color: 0xf0f0f0 } ));
     ground.position.z = -10;
     ground.rotation.x = -Math.PI / 2;
     scene.add(ground);
@@ -113,21 +113,21 @@ function onLoad() {
     addPowerUps();
 
     //animate();
-};
+}
 
-var line = undefined;
-var line2 = undefined;
-var line3 = undefined;
+let line = undefined;
+let line2 = undefined;
+let line3 = undefined;
 
 function animate() {
     requestAnimationFrame(animate);
 
-    var countWinners = 0;
-    var winner;
+    let countWinners = 0;
+    let winner;
 
     //array of the trails of all snakes
     allTrails = [];
-    for(var i = 0; i < players.length; i++){
+    for(let i = 0; i < players.length; i++){
         allTrails = allTrails.concat(players[i].snake.trailArr);
         if(!players[i].loser){
             countWinners++;
@@ -135,16 +135,16 @@ function animate() {
         }
     }
 
-    if(countWinners == 1){
+    if(countWinners === 1){
         alert("player" + winner.name + " Winner!")
     }
 
-    for (var i = 0; i < players.length; i++) {
+    for (let i = 0; i < players.length; i++) {
 
-        var speedx;
-        var speedz;
+        let speedx;
+        let speedz;
 
-        var newPos = new THREE.Vector3(players[i].snake.sphere.position.x, players[i].snake.sphere.position.y, players[i].snake.sphere.position.z);
+        let newPos = new THREE.Vector3(players[i].snake.sphere.position.x, players[i].snake.sphere.position.y, players[i].snake.sphere.position.z);
         newPos.x -= -Math.sin(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
         newPos.z -= Math.cos(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
 
@@ -164,57 +164,58 @@ function animate() {
         line3 = collision(speedx, speedz, line3, i, newPos);
     }
 
-    for(var i = 0; i < players.length; i++)
+    for(let i = 0; i < players.length; i++)
     {
-        for(var j = 0; j < powerUpArr.length; j++){
-                var xd = players[i].snake.sphere.position.x - powerUpArr[j].powerUpMesh.position.x;
-                var zd = players[i].snake.sphere.position.z - powerUpArr[j].powerUpMesh.position.z;
+        for(let j = 0; j < powerUpArr.length; j++){
+                let xd = players[i].snake.sphere.position.x - powerUpArr[j].powerUpMesh.position.x;
+                let zd = players[i].snake.sphere.position.z - powerUpArr[j].powerUpMesh.position.z;
 
-                var sumRadius = (players[i].snake.size + powerUpArr[j].size);
-                var sqrSumRadius = sumRadius * sumRadius;
-                var distSqr = (xd * xd) + (zd * zd);
+                let sumRadius = (players[i].snake.size + powerUpArr[j].size);
+                let sqrSumRadius = sumRadius * sumRadius;
+                let distSqr = (xd * xd) + (zd * zd);
 
                 if (distSqr <= sqrSumRadius) {
+                    let that = players[i];
                     switch (powerUpArr[j].sort) {
                         case 1:
                             players[i].snake.bigger();
-                            var that = players[i];
+                            //let that = players[i];
                             setTimeout(function(){that.snake.smaller();}, waitTime);
                             break;
                         case 2:
                             players[i].snake.smaller();
-                            var that = players[i];
+                           //let that = players[i];
                             setTimeout(function(){that.snake.bigger();}, waitTime);
                             break;
                         case 3:
                             players[i].snake.faster();
-                            var that = players[i];
+                            //let that = players[i];
                             setTimeout(function(){that.snake.slower();}, waitTime);
                             break;
                         case 4:
                             players[i].snake.slower();
-                            var that = players[i];
+                            //let that = players[i];
                             setTimeout(function(){that.snake.faster();}, waitTime);
                             break;
                         case 5:
                             //all snake trails removed
-                            for(var k = 0; k < players.length; k++){
+                            for(let k = 0; k < players.length; k++){
                                 players[k].snake.eraser();
                             }
                             break;
                         case 6:
                             players[i].snake.moreJumps();
-                            var that = players[i];
+                            //let that = players[i];
                             setTimeout(function(){that.snake.lessJumps();}, waitTime);
                             break;
                         case 7:
                             players[i].snake.mirroring();
-                            var that = players[i];
+                            //let that = players[i];
                             setTimeout(function(){that.snake.mirroring();}, waitTime);
                             break;
                         default:
                             break;
-                    };
+                    }
 
                     powerUpArr[j].removeMesh();
                     powerUpArr.splice(powerUpArr.indexOf(powerUpArr[j]), 1);
@@ -246,24 +247,24 @@ function animate() {
 
     window.addEventListener( 'resize', onWindowResize, false );
     renderer.render(scene, camera);
-};
+}
 
 //Adds lights to scene
 function addLights() {
-    ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    light = new THREE.PointLight(0xffffff, 1, height/2);
+    let light = new THREE.PointLight(0xffffff, 1, height/2);
     light.position.set(0, 150, -height/4);
     light.castShadow = true;
     light.shadow.camera.near = 100;
     light.shadow.camera.far = height*width;
     scene.add(light);
 
-    light2 = light.clone();
+    let light2 = light.clone();
     light2.position.set(0,150,height/4);
     scene.add(light2);
-};
+}
 
 //timer for placing powerups
 function addPowerUps(){
@@ -277,4 +278,4 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-};
+}

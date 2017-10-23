@@ -1,9 +1,9 @@
 // Models/material loading!
-var mtlLoader = new THREE.MTLLoader();
+let mtlLoader = new THREE.MTLLoader();
 mtlLoader.load("Models/PlayGround.mtl", function(materials){
 
     materials.preload();
-    var objLoader = new THREE.OBJLoader();
+    let objLoader = new THREE.OBJLoader();
     objLoader.setMaterials(materials);
 
     objLoader.load("Models/PlayGround.obj", function(mesh){
