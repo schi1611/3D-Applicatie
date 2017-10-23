@@ -1,5 +1,6 @@
 /**
  * Created by Leon on 15-10-2017.
+ * Game controls die jezelf kan invoeren.
  */
 class Controls
 {
@@ -17,7 +18,7 @@ class Controls
         this.keyboard[this.left] = false;
         this.keyboard[this.right] = false;
         this.keyboard[this.jump] = false;
-        var self = this;
+        let self = this;
         function keydownScoped(e) {
             self.keydown(e);
         }

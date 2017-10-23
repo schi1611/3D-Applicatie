@@ -9,7 +9,7 @@
         <script type="text/javascript" src="js/three.min.js"></script>
         <script type="text/javascript" src="js/MTLLoader.js"></script>
         <script type="text/javascript" src="js/OBJLoader.js"></script>
-        <script type="text/javascript" src="js/OBJLoader2.js"></script>
+        <!--script type="text/javascript" src="js/OBJLoader2.js"></script-->
         <script type="text/javascript" src="js/models.js"></script>
         <script type="text/javascript" src="js/Snake.js"></script>
         <script type="text/javascript" src="js/player.js"></script>
@@ -36,7 +36,7 @@
             <div id="overlay2">
                 <h1 id="paused">Paused</h1>
                 <div id="center">
-                    <button type="button" id="continue" onclick="pauseOff()">Continue</button></br></br>
+                    <button type="button" id="continue" onclick="pauseOff()">Continue</button><br>
                     <button type="button" id="reset" onclick="gamereset()">Reset</button>
                 </div>
             </div>
@@ -52,6 +52,7 @@
 
             function startOn() {
                 document.getElementById("overlay").style.display = "block";
+                settingsOff();
             }
 
             function startOff() {
@@ -65,8 +66,7 @@
 
             function pauseOn(){
                 document.getElementById("overlay2").style.display = "block";
-
-                for(var i = 0; i < players.length; i++) {
+                for(let i = 0; i < players.length; i++) {
                     players[i].snake.lastSpeed = players[i].snake.speed;
                     players[i].snake.speed = 0;
                 }
@@ -75,7 +75,7 @@
             function pauseOff(){
                 document.getElementById("overlay2").style.display = "none";
 
-                for(var i = 0; i < players.length; i++) {
+                for(let i = 0; i < players.length; i++) {
                     players[i].snake.speed = players[i].snake.lastSpeed;
                 }
             }

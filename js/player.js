@@ -1,7 +1,7 @@
 class Player {
     constructor(name, snake, controls)
     {
-        var score = 0;
+        //let score = 0;
         this.name = name;
         this.snake = snake;
         this.controls = controls;
@@ -20,7 +20,7 @@ class Player {
                 if(!this.snake.isJumping){
                     this.snake.jump();
                     this.snake.isAllowedToJump = false;
-                    var that = this.snake;
+                    let that = this.snake;
                     setTimeout(function(){that.isAllowedToJump = true;}, this.snake.waitToJump);
                 }
             }

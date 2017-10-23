@@ -48,7 +48,7 @@ class Snake{
         //jump
         if(this.isJumping){
             // the last position on the sine wave
-            var lastHeight = this.jumpSinWavePos;
+            let lastHeight = this.jumpSinWavePos;
             // the new position on the sine wave
             this.jumpSinWavePos += this.speed/(this.size*2);
             if (this.jumpSinWavePos >= Math.PI){
@@ -62,26 +62,27 @@ class Snake{
         }
 
         //3d trail
-        var newRot = this.sphere.rotation.y;
-        var newPos = new THREE.Vector3().copy(this.sphere.position);
+        let newRot = this.sphere.rotation.y;
+        let newPos = new THREE.Vector3().copy(this.sphere.position);
 
         if (this.trail) {
-            if (newRot == this.oldRot && !this.isJumping && !this.powerUp) {
+            var trail3d;
+            if (newRot === this.oldRot && !this.isJumping && !this.powerUp) {
                 //remove old and create new
-                var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
+                trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
                 // var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
                 // scene.remove(this.boxArr.pop());
             } else {
                 //create new
-                var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
+                trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
                 //var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
                 this.oldestPos = newPos;
             }
         }
         else{
             //end old and start new
-            var trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
+            trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
             //var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
             this.oldestPos = newPos;
         }
@@ -157,7 +158,7 @@ class Snake{
     eraser(){
         this.powerUp = true;
         this.move();
-        for(var i = 0; i < this.trailArr.length; i++){
+        for(let i = 0; i < this.trailArr.length; i++){
             scene.remove(this.trailArr[i]);
         }
         this.trailArr = [];
@@ -177,15 +178,15 @@ class Snake{
     }
 
     cylinderMesh(pointX, pointY, material, size) {
-    var direction = new THREE.Vector3().subVectors(pointY, pointX);
-    var orientation = new THREE.Matrix4();
+    let direction = new THREE.Vector3().subVectors(pointY, pointX);
+    let orientation = new THREE.Matrix4();
     orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
     orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
         0, 0, 1, 0,
         0, -1, 0, 0,
         0, 0, 0, 1));
-    var edgeGeometry = new THREE.CylinderGeometry(size, size, direction.length()+1, 8, 1);
-    var edge = new THREE.Mesh(edgeGeometry, material);
+    let edgeGeometry = new THREE.CylinderGeometry(size, size, direction.length()+1, 8, 1);
+    let edge = new THREE.Mesh(edgeGeometry, material);
     edge.applyMatrix(orientation);
     // position based on midpoints
     edge.position.x = (pointY.x + pointX.x) / 2;
