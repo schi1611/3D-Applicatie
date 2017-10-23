@@ -107,7 +107,7 @@ function onLoad() {
 
     game = new Game();
 
-    animate();
+    //animate();
 };
 
 var line = undefined;

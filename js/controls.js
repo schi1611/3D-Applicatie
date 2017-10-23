@@ -7,9 +7,9 @@ class Controls
         this.left = left.toUpperCase().charCodeAt(0);
         this.right = right.toUpperCase().charCodeAt(0);
         this.jump = jump.toUpperCase().charCodeAt(0);
-        if(left === "LEFT")
+        if(left === "LEFT" || left === "left")
             this.left = 37;
-        if (right === "RIGHT")
+        if (right === "RIGHT" || right === "right")
             this.right = 39;
         this.keyboard = {};
         this.keyboard[this.left] = false;
