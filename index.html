@@ -21,8 +21,10 @@
     </head>
     <body>
         <div id="canvas">
-            <div id="game"></div>
-            <div id="players"></div>
+            <div id="layer">
+                <div id="game"></div>
+                <div id="players"></div>
+            </div>
 
             <div id="overlay">
                 <h1 id="gameTitle">Achtung, die Kurve!</h1>
@@ -52,10 +54,11 @@
 
             function startOff() {
                 document.getElementById("overlay").style.display = "none";
+                settingsOn();
 
-                for(var i = 0; i < players.length; i++) {
-                    players[i].snake.speed = 0.5;
-                }
+//                for(var i = 0; i < players.length; i++) {
+//                    players[i].snake.speed = 0.5;
+//                }
             }
 
             function pauseOn(){
@@ -73,6 +76,14 @@
                 for(var i = 0; i < players.length; i++) {
                     players[i].snake.speed = players[i].snake.lastSpeed;
                 }
+            }
+
+            function settingsOn() {
+                document.getElementById("layer").style.display = "block";
+            }
+
+            function settingsOff() {
+                document.getElementById("layer").style.display = "none";
             }
 
         </script>

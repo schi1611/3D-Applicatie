@@ -10,8 +10,8 @@ class Game {
         this.turns;
         this.colors = ["red", "blue", "yellow", "green", "pink", "black", "white"];
         this.hexcolors = [ 0xf45c42, 0x0033cc, 0xffff00, 0x00ff00, 0xffb3e6, 0x000000, 0xffffff];
-        this.world = "Hello World, type here the number of totalplayers: <input required type=\"number\" min=\"2\" max=\"8\" value=\"2\" id=\"ptext\" > " +
-            "<input type='button' value='Everdien' onclick='getText()'>";
+        this.world = "Number of players: <input required type=\"number\" min=\"2\" max=\"8\" value=\"2\" id=\"ptext\" > " +
+            "<input type='button' value='Okay' id=\"pbutton\" onclick='getText()'>";
         document.getElementById("game").innerHTML = this.world;
     }
     startgame()
@@ -23,7 +23,7 @@ class Game {
         }
         players = this.players;
         animate();
-        document.getElementById("players").style.display = "none";
+        document.getElementById("players").style.display = "none" ;
         document.getElementById("game").style.display = "none";
     }
     setcontrols()
@@ -68,7 +68,7 @@ class Game {
                 playerfield += "<option value='" + this.colors[j] + "'>" + this.colors[j] + "</option>"
             playerfield += "</select> <br>";
         }
-        document.getElementById("players").innerHTML = playerfield + "<input type='button' value='okay' onclick='setControls()'> <br> ";
+        document.getElementById("players").innerHTML = playerfield + "<input type='button' value='Play' id='startbutton' onclick='setControls()'> <br> ";
     }
     resetGame()
     {
@@ -96,6 +96,7 @@ function setControls()
 {
     game.setcontrols();
     game.setcolors();
+    settingsOff();
     game.startgame();
 }
 function gamereset() {
