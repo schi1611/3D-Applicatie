@@ -6,6 +6,7 @@ var raycaster = new THREE.Raycaster();
 var cGroup = new THREE.Group();
 var powerUpArr = [];
 var waitTime = 10000;
+var allTrails = [];
 
 function collision(speedx, speedz, _line, i, newPos) {
     if (line) {
@@ -32,7 +33,7 @@ function collision(speedx, speedz, _line, i, newPos) {
     raycaster.set( newPos, direction);
 
     // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects( players[i].snake.boxArr );
+    var intersects = raycaster.intersectObjects( allTrails );
 
     if(intersects.length > 0){
         var intersection = intersects[0];
@@ -115,6 +116,12 @@ var line3 = undefined;
 
 function animate() {
     requestAnimationFrame(animate);
+
+    for(var i = 0; i < players.length; i++){
+        allTrails = allTrails.concat(players[i].snake.trailArr);
+        console.log(allTrails.length);
+    }
+
     for (var i = 0; i < players.length; i++) {
 
         var speedx;
