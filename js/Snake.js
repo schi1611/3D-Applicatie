@@ -5,9 +5,9 @@ class Snake{
     constructor(color){
         this.size = 2;
         this.posX = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random snake x position
+        this.posZ = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
         this.posY = this.size;
-        this.posZ = this.randomZ = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
-        this.speed = 0.1;
+        this.speed = 0.5;
         this.lastSpeed = this.speed;
         this.rotateSpeed = Math.PI * 0.05;
         this.trail = true;
@@ -155,6 +155,18 @@ class Snake{
             scene.remove(this.trailArr[i]);
         }
         this.powerUp = false;
+    }
+
+    resetSnake(){
+        this.sphere.position.x = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random snake x position
+        this.sphere.position.z = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
+        this.speed = 0.5;
+        this.oldPos = new THREE.Vector3().copy(this.sphere.position);
+        this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
+        this.powerUp = false;
+        this.jumping = false;
+        this.jumpSinWavePos = 0;
+        this.trail = true;
     }
 
     cylinderMesh(pointX, pointY, material, size) {

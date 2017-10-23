@@ -38,12 +38,11 @@ class Game {
     }
     setcolors()
     {
-        var scolor = document.getElementById("player1").value;
         for (var i = 0; i < this.totalplayers; i++)
         {
             for (var j = 0; j < this.colors.length; j++)
             {
-                if (document.getElementById("player" + (i+1)).value == this.colors[j])
+                if (document.getElementById("player" + (i+1)).value === this.colors[j])
                 {
                     this.playercolors[i] = this.hexcolors[j];
                     break;
@@ -53,14 +52,14 @@ class Game {
     }
     gettext()
     {
-        var ptext = document.getElementById("ptext").value;
-        if (ptext > 8)
-            ptext = 8;
-        if (ptext < 2)
-            ptext = 2;
-        this.totalplayers = ptext;
+        this.totalplayers = document.getElementById("ptext").value;
+        if (this.totalplayers > 8)
+            this.totalplayers = 8;
+        if (this.totalplayers < 2)
+            this.totalplayers = 2;
+
         var playerfield = "";
-        for (var i = 0; i < ptext; i++)
+        for (var i = 0; i < this.totalplayers; i++)
         {
             playerfield += "<p>Player " + (i+1)+ " <input type='text' value='left' name= 'player" + (i+1) + "' > " +
                 "<input type='text' value='right' name= 'player" + (i + 1) + "' >" +
@@ -73,7 +72,18 @@ class Game {
     }
     resetGame()
     {
-
+        for (var i = 0;i < players.length; i++) {
+            //reset speler positie
+            players[i].snake.resetSnake();
+            //alle trails en objecten moeten verwijderd zijn.
+            players[i].snake.eraser();
+            //reset de winnaar
+            players[i].loser = false;
+        }
+        //reset powerups
+        for (var i = 0; i < powerUpArr.length; i++)
+            scene.remove(powerUpArr[i]);
+        powerUpArr = [];
     }
 
 }
@@ -87,4 +97,7 @@ function setControls()
     game.setcontrols();
     game.setcolors();
     game.startgame();
+}
+function gamereset() {
+    game.resetGame();
 }

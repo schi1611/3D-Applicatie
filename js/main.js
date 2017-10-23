@@ -68,13 +68,13 @@ function onLoad() {
 
     addLights();
 
-    snake = new Snake(0xffff00);
-    snake.faster();
-
-    player = new Player(0,snake, new Controls("A", "D", "S"));
-    player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
-    player2.snake.faster();
-    players = [player, player2];
+    // snake = new Snake(0xffff00);
+    // snake.faster();
+    //
+    // player = new Player(0,snake, new Controls("A", "D", "S"));
+    // player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
+    // player2.snake.faster();
+    // players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
     powerUp = new PowerUps();
@@ -105,9 +105,9 @@ function onLoad() {
     powerUpArr.push(powerUp7);
     console.log(powerUp7.sort, powerUp7.randomX, powerUp7.randomZ);
 
-    //game = new Game();
+    game = new Game();
 
-    animate();
+    //animate();
 };
 
 var line = undefined;
@@ -119,7 +119,6 @@ function animate() {
 
     for(var i = 0; i < players.length; i++){
         allTrails = allTrails.concat(players[i].snake.trailArr);
-        console.log(allTrails.length);
     }
 
     for (var i = 0; i < players.length; i++) {

@@ -5,6 +5,7 @@ class Player {
         this.name = name;
         this.snake = snake;
         this.controls = controls;
+        this.loser = false;
     }
 
     update()
