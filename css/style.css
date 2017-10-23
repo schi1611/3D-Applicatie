@@ -82,12 +82,26 @@ html, body{
     position: relative;
     top: 50px;
     bottom: auto;
+    color: White;
 }
 
-#ptext, #pbutton, #players, #game{
+#players, #game, #startbutton{
     font-size: 28px;
+}
+#pbutton{
+    font-size: 20px;
 }
 
 #pbutton, #startbutton{
     cursor: pointer;
+    border-radius: 10px;
+}
+
+#startbutton{
+    margin: 10px;
+}
+
+.cinput{
+    border-radius: 10px;
+    padding: 5px;
 }

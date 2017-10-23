@@ -10,7 +10,7 @@ class Game {
         this.turns;
         this.colors = ["red", "blue", "yellow", "green", "pink", "black", "white"];
         this.hexcolors = [ 0xf45c42, 0x0033cc, 0xffff00, 0x00ff00, 0xffb3e6, 0x000000, 0xffffff];
-        this.world = "Number of players: <input required type=\"number\" min=\"2\" max=\"8\" value=\"2\" id=\"ptext\" > " +
+        this.world = "Number of players: <input required type=\"number\" min=\"2\" max=\"8\" value=\"2\" class='cinput' id=\"ptext\" > " +
             "<input type='button' value='Okay' id=\"pbutton\" onclick='getText()'>";
         document.getElementById("game").innerHTML = this.world;
     }
@@ -58,17 +58,19 @@ class Game {
         if (this.totalplayers < 2)
             this.totalplayers = 2;
 
+        var text = "";
         var playerfield = "";
         for (var i = 0; i < this.totalplayers; i++)
         {
-            playerfield += "<p>Player " + (i+1)+ " <input type='text' value='left' name= 'player" + (i+1) + "' > " +
-                "<input type='text' value='right' name= 'player" + (i + 1) + "' >" +
-                "<input type='text' value='jump' name='player" + (i + 1) + "' > <select id='player" + (i + 1) + "'> ";
+            text = "<p>Give in your preferred controls and color down below</p>";
+            playerfield += "<p>Player " + (i+1)+ " <input type='text' placeholder='left' class='cinput' name= 'player" + (i+1) + "' > " +
+                "<input type='text' placeholder='right' class='cinput' name= 'player" + (i + 1) + "' >" + " " +
+                "<input type='text' placeholder='jump' class='cinput' name='player" + (i + 1) + "' > <select id='player" + (i + 1) + "'> ";
             for (var j = 0; j < this.colors.length; j++)
                 playerfield += "<option value='" + this.colors[j] + "'>" + this.colors[j] + "</option>"
             playerfield += "</select> <br>";
         }
-        document.getElementById("players").innerHTML = playerfield + "<input type='button' value='Play' id='startbutton' onclick='setControls()'> <br> ";
+        document.getElementById("players").innerHTML = text + playerfield + "<input type='button' value='Play' id='startbutton' onclick='setControls()'> <br> ";
     }
     resetGame()
     {
