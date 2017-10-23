@@ -7,6 +7,7 @@ var cGroup = new THREE.Group();
 var powerUpArr = [];
 var waitTime = 10000;
 var allTrails = [];
+var placePowerUp = false;
 
 function collision(speedx, speedz, _line, i, newPos) {
     if (line) {
@@ -68,46 +69,48 @@ function onLoad() {
 
     addLights();
 
-    snake = new Snake(0xffff00);
-    snake.faster();
-
-    player = new Player(0,snake, new Controls("A", "D", "S"));
-    player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
-    player2.snake.faster();
-    players = [player, player2];
+    // snake = new Snake(0xffff00);
+    // snake.faster();
+    //
+    // player = new Player(0,snake, new Controls("A", "D", "S"));
+    // player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
+    // player2.snake.faster();
+    // players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    powerUp = new PowerUps();
-    powerUpArr.push(powerUp);
-    console.log(powerUp.sort, powerUp.randomX, powerUp.randomZ);
+    // powerUp = new PowerUps();
+    // powerUpArr.push(powerUp);
+    // console.log(powerUp.sort, powerUp.randomX, powerUp.randomZ);
+    //
+    // var powerUp2 = new PowerUps();
+    // powerUpArr.push(powerUp2);
+    // console.log(powerUp2.sort, powerUp2.randomX, powerUp2.randomZ);
+    //
+    // var powerUp3 = new PowerUps();
+    // powerUpArr.push(powerUp3);
+    // console.log(powerUp3.sort, powerUp3.randomX, powerUp3.randomZ);
+    //
+    // var powerUp4 = new PowerUps();
+    // powerUpArr.push(powerUp4);
+    // console.log(powerUp4.sort, powerUp4.randomX, powerUp4.randomZ);
+    //
+    // var powerUp5 = new PowerUps();
+    // powerUpArr.push(powerUp5);
+    // console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
+    //
+    // var powerUp6 = new PowerUps();
+    // powerUpArr.push(powerUp6);
+    // console.log(powerUp6.sort, powerUp6.randomX, powerUp6.randomZ);
+    //
+    // var powerUp7 = new PowerUps();
+    // powerUpArr.push(powerUp7);
+    // console.log(powerUp7.sort, powerUp7.randomX, powerUp7.randomZ);
 
-    var powerUp2 = new PowerUps();
-    powerUpArr.push(powerUp2);
-    console.log(powerUp2.sort, powerUp2.randomX, powerUp2.randomZ);
+    game = new Game();
 
-    var powerUp3 = new PowerUps();
-    powerUpArr.push(powerUp3);
-    console.log(powerUp3.sort, powerUp3.randomX, powerUp3.randomZ);
+    timerPowerUp();
 
-    var powerUp4 = new PowerUps();
-    powerUpArr.push(powerUp4);
-    console.log(powerUp4.sort, powerUp4.randomX, powerUp4.randomZ);
-
-    var powerUp5 = new PowerUps();
-    powerUpArr.push(powerUp5);
-    console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
-
-    var powerUp6 = new PowerUps();
-    powerUpArr.push(powerUp6);
-    console.log(powerUp6.sort, powerUp6.randomX, powerUp6.randomZ);
-
-    var powerUp7 = new PowerUps();
-    powerUpArr.push(powerUp7);
-    console.log(powerUp7.sort, powerUp7.randomX, powerUp7.randomZ);
-
-    //game = new Game();
-
-    animate();
+    //animate();
 };
 
 var line = undefined;
@@ -116,6 +119,9 @@ var line3 = undefined;
 
 function animate() {
     requestAnimationFrame(animate);
+
+    //power-up on random time
+    //setTimeout(function(){powerUpArr.push(new PowerUps());}, Math.random() * (30000 - 15000) + 15000);
 
     //array of the trails of all snakes
     allTrails = [];
@@ -247,6 +253,12 @@ function addLights() {
     light2.position.set(0,150,height/4);
     scene.add(light2);
 };
+
+//timer for placing powerups
+function timerPowerUp(){
+    powerUpArr.push(new PowerUps());
+    setTimeout(timerPowerUp,  Math.random() * (15000 - 3000) + 3000);
+}
 
 //Resizes window after window size changed
 function onWindowResize() {
