@@ -135,11 +135,11 @@ class Snake{
     }
 
     moreJumps(){
-        this.waitToJump *= 2;
+        this.waitToJump *= 1/2;
     }
 
     lessJumps(){
-        this.waitToJump *= 1/2;
+        this.waitToJump *= 2;
     }
 
     mirroring(){
