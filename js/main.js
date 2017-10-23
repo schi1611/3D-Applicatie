@@ -7,7 +7,7 @@ var cGroup = new THREE.Group();
 var powerUpArr = [];
 var waitTime = 10000;
 
-function collision(speedx, speedz, _line, i) {
+function collision(speedx, speedz, _line, i, newPos) {
     if (line) {
         scene.remove(_line);
     }
@@ -67,13 +67,13 @@ function onLoad() {
 
     addLights();
 
-    //snake = new Snake(0xffff00);
-    //snake.faster();
+    snake = new Snake(0xffff00);
+    snake.faster();
 
-    //player = new Player(0,snake, new Controls("A", "D", "S"));
-    //player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
-    //player2.snake.faster();
-    //players = [player, player2];
+    player = new Player(0,snake, new Controls("A", "D", "S"));
+    player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
+    player2.snake.faster();
+    players = [player, player2];
     camera.lookAt(new THREE.Vector3(0,0,0));
 
     powerUp = new PowerUps();
@@ -104,9 +104,9 @@ function onLoad() {
     powerUpArr.push(powerUp7);
     console.log(powerUp7.sort, powerUp7.randomX, powerUp7.randomZ);
 
-    game = new Game();
+    //game = new Game();
 
-    //animate();
+    animate();
 };
 
 var line = undefined;
@@ -115,7 +115,7 @@ var line3 = undefined;
 
 function animate() {
     requestAnimationFrame(animate);
-    for (var i = 0; i < players[i].length; i++) {
+    for (var i = 0; i < players.length; i++) {
 
         var speedx;
         var speedz;
@@ -127,17 +127,17 @@ function animate() {
         speedx = -Math.sin(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
         speedz = Math.cos(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
 
-        line = collision(speedx, speedz, linem, i);
+        line = collision(speedx, speedz, line, i, newPos);
 
         speedx = -Math.sin(players[i].snake.sphere.rotation.y + 0.8) * players[i].snake.speed;
         speedz = Math.cos(players[i].snake.sphere.rotation.y + 0.8) * players[i].snake.speed;
 
-        line2 = collision(speedx, speedz, line2, i);
+        line2 = collision(speedx, speedz, line2, i, newPos);
 
         speedx = -Math.sin(players[i].snake.sphere.rotation.y - 0.8) * players[i].snake.speed;
         speedz = Math.cos(players[i].snake.sphere.rotation.y - 0.8) * players[i].snake.speed;
 
-        line3 = collision(speedx, speedz, line3, i);
+        line3 = collision(speedx, speedz, line3, i, newPos);
     }
 
     for(var i = 0; i < players.length; i++)
