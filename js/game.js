@@ -82,7 +82,7 @@ class Game {
         }
         //reset powerups
         for (var i = 0; i < powerUpArr.length; i++)
-            scene.remove(powerUpArr[i]);
+            powerUpArr[i].removeMesh();
         powerUpArr = [];
     }
 
@@ -100,5 +100,6 @@ function setControls()
     game.startgame();
 }
 function gamereset() {
+    document.getElementById("overlay2").style.display = "none";
     game.resetGame();
 }

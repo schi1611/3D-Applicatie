@@ -37,7 +37,7 @@ class Snake{
         this.jumpHeight = this.size*3;
         this.jumpSinWavePos = 0;
         //time out jump
-        this.waitToJump = 10000;
+        this.waitToJump = 3000;
         this.isAllowedToJump = true;
     }
 

@@ -40,6 +40,7 @@ function collision(speedx, speedz, _line, i, newPos) {
         console.log("intersects found");
         if(intersection.distance < 1){
             players[i].snake.collision();
+            players[i].loser = true;
         }
     }
 
@@ -117,10 +118,21 @@ var line3 = undefined;
 function animate() {
     requestAnimationFrame(animate);
 
+    var countWinners = 0;
+    var winner;
+
     //array of the trails of all snakes
     allTrails = [];
     for(var i = 0; i < players.length; i++){
         allTrails = allTrails.concat(players[i].snake.trailArr);
+        if(!players[i].loser){
+            countWinners++;
+            winner = players[i];
+        }
+    }
+
+    if(countWinners == 1){
+        alert("player" + winner.name + " Winner!")
     }
 
     for (var i = 0; i < players.length; i++) {
@@ -162,22 +174,22 @@ function animate() {
                     switch (powerUpArr[j].sort) {
                         case 1:
                             players[i].snake.bigger();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.smaller();}, waitTime);
                             break;
                         case 2:
                             players[i].snake.smaller();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.bigger();}, waitTime);
                             break;
                         case 3:
                             players[i].snake.faster();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.slower();}, waitTime);
                             break;
                         case 4:
                             players[i].snake.slower();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.faster();}, waitTime);
                             break;
                         case 5:
@@ -188,11 +200,12 @@ function animate() {
                             break;
                         case 6:
                             players[i].snake.moreJumps();
+                            var that = players[i];
                             setTimeout(function(){that.snake.lessJumps();}, waitTime);
                             break;
                         case 7:
                             players[i].snake.mirroring();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.mirroring();}, waitTime);
                             break;
                         default:

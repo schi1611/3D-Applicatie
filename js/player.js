@@ -20,7 +20,8 @@ class Player {
                 if(!this.snake.isJumping){
                     this.snake.jump();
                     this.snake.isAllowedToJump = false;
-                    setTimeout(function(){this.snake.isAllowedToJump = true;}, this.snake.waitToJump);
+                    var that = this.snake;
+                    setTimeout(function(){that.isAllowedToJump = true;}, this.snake.waitToJump);
                 }
             }
             this.controls.clearJump();
