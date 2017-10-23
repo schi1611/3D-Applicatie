@@ -7,7 +7,7 @@ class Snake{
         this.posX = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random snake x position
         this.posY = this.size;
         this.posZ = this.randomZ = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
-        this.speed = 0.1;
+        this.speed = 0.5;
         this.lastSpeed = this.speed;
         this.rotateSpeed = Math.PI * 0.05;
         this.trail = true;
@@ -30,12 +30,15 @@ class Snake{
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldRot = this.sphere.rotation.y;
         this.trailArr = [];
-        this.boxArr = [];
+        //this.boxArr = [];
 
         //jump
-        this.jumping = false;
+        this.isJumping = false;
         this.jumpHeight = this.size*3;
         this.jumpSinWavePos = 0;
+        //time out jump
+        this.waitToJump = 10000;
+        this.isAllowedToJump = true;
     }
 
     move() {
@@ -43,15 +46,15 @@ class Snake{
         this.sphere.position.z -= Math.cos(this.sphere.rotation.y) * this.speed;
 
         //jump
-        if(this.jumping){
+        if(this.isJumping){
             // the last position on the sine wave
             var lastHeight = this.jumpSinWavePos;
             // the new position on the sine wave
             this.jumpSinWavePos += this.speed/(this.size*2);
             if (this.jumpSinWavePos >= Math.PI){
                 this.sphere.position.y = this.posY;
-                //hit ground set jumping to false
-                this.jumping = false
+                //hit ground set isJumping to false
+                this.isJumping = false
             } else{
                 //move along the sine wave
                 this.sphere.position.y -= -(Math.sin(this.jumpSinWavePos) - Math.sin(lastHeight)) * this.jumpHeight;
@@ -63,23 +66,23 @@ class Snake{
         var newPos = new THREE.Vector3().copy(this.sphere.position);
 
         if (this.trail) {
-            if (newRot == this.oldRot && !this.jumping && !this.powerUp) {
+            if (newRot == this.oldRot && !this.isJumping && !this.powerUp) {
                 //remove old and create new
                 var trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
-                var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
-                scene.remove(this.boxArr.pop());
+                // var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
+                // scene.remove(this.boxArr.pop());
             } else {
                 //create new
                 var trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
-                var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
+                //var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
                 this.oldestPos = newPos;
             }
         }
         else{
             //end old and start new
             var trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
-            var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
+            //var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
             this.oldestPos = newPos;
         }
 
@@ -87,8 +90,8 @@ class Snake{
         trail3d.castShadow = true;
         this.trailArr.push(trail3d);
         scene.add(trail3d);
-        this.boxArr.push(box);
-        scene.add(box);
+        //this.boxArr.push(box);
+        //scene.add(box);
         this.oldPos = newPos;
         this.oldRot = newRot;
         this.trail = true;
@@ -107,8 +110,7 @@ class Snake{
     }
 
     jump(){
-        //this.spring = true;
-        this.jumping = true;
+        this.isJumping = true;
         this.jumpSinWavePos = 0;
     }
 
@@ -133,7 +135,11 @@ class Snake{
     }
 
     moreJumps(){
+        this.waitToJump *= 2;
+    }
 
+    lessJumps(){
+        this.waitToJump *= 1/2;
     }
 
     mirroring(){
@@ -154,6 +160,7 @@ class Snake{
         for(var i = 0; i < this.trailArr.length; i++){
             scene.remove(this.trailArr[i]);
         }
+        this.trailArr = [];
         this.powerUp = false;
     }
 
@@ -175,22 +182,22 @@ class Snake{
     return edge;
     }
 
-    boxMesh(pointX, pointY, material, size) {
-        var direction = new THREE.Vector3().subVectors(pointY, pointX);
-        var orientation = new THREE.Matrix4();
-        orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
-        orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
-            0, 0, 1, 0,
-            0, -1, 0, 0,
-            0, 0, 0, 1));
-        var edgeGeometry = new THREE.BoxGeometry(size, direction.length()+1, size);
-        var edge = new THREE.Mesh(edgeGeometry, material);
-        edge.material.visible = false;
-        edge.applyMatrix(orientation);
-        // position based on midpoints
-        edge.position.x = (pointY.x + pointX.x) / 2;
-        edge.position.y = (pointY.y + pointX.y) / 2;
-        edge.position.z = (pointY.z + pointX.z) / 2;
-        return edge;
-    }
+    // boxMesh(pointX, pointY, material, size) {
+    //     var direction = new THREE.Vector3().subVectors(pointY, pointX);
+    //     var orientation = new THREE.Matrix4();
+    //     orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
+    //     orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
+    //         0, 0, 1, 0,
+    //         0, -1, 0, 0,
+    //         0, 0, 0, 1));
+    //     var edgeGeometry = new THREE.BoxGeometry(size, direction.length()+1, size);
+    //     var edge = new THREE.Mesh(edgeGeometry, material);
+    //     edge.material.visible = false;
+    //     edge.applyMatrix(orientation);
+    //     // position based on midpoints
+    //     edge.position.x = (pointY.x + pointX.x) / 2;
+    //     edge.position.y = (pointY.y + pointX.y) / 2;
+    //     edge.position.z = (pointY.z + pointX.z) / 2;
+    //     return edge;
+    // }
 }

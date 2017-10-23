@@ -117,9 +117,10 @@ var line3 = undefined;
 function animate() {
     requestAnimationFrame(animate);
 
+    //array of the trails of all snakes
+    allTrails = [];
     for(var i = 0; i < players.length; i++){
         allTrails = allTrails.concat(players[i].snake.trailArr);
-        console.log(allTrails.length);
     }
 
     for (var i = 0; i < players.length; i++) {
@@ -187,6 +188,7 @@ function animate() {
                             break;
                         case 6:
                             players[i].snake.moreJumps();
+                            setTimeout(function(){that.snake.lessJumps();}, waitTime);
                             break;
                         case 7:
                             players[i].snake.mirroring();

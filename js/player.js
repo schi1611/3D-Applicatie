@@ -15,8 +15,12 @@ class Player {
             this.snake.right();
         if (this.controls.jumpPressed())
         {
-            if(!this.snake.jumping){
-                this.snake.jump();
+            if(this.snake.isAllowedToJump){
+                if(!this.snake.isJumping){
+                    this.snake.jump();
+                    this.snake.isAllowedToJump = false;
+                    setTimeout(function(){this.snake.isAllowedToJump = true;}, this.snake.waitToJump);
+                }
             }
             this.controls.clearJump();
         }
