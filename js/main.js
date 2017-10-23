@@ -41,6 +41,7 @@ function collision(speedx, speedz, _line, i, newPos) {
         console.log("intersects found");
         if(intersection.distance < 1){
             players[i].snake.collision();
+            players[i].loser = true;
         }
     }
 
@@ -76,6 +77,7 @@ function onLoad() {
     // player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
     // player2.snake.faster();
     // players = [player, player2];
+
     camera.lookAt(new THREE.Vector3(0,0,0));
 
     // powerUp = new PowerUps();
@@ -108,7 +110,7 @@ function onLoad() {
 
     game = new Game();
 
-    timerPowerUp();
+    addPowerUps();
 
     //animate();
 };
@@ -120,13 +122,21 @@ var line3 = undefined;
 function animate() {
     requestAnimationFrame(animate);
 
-    //power-up on random time
-    //setTimeout(function(){powerUpArr.push(new PowerUps());}, Math.random() * (30000 - 15000) + 15000);
+    var countWinners = 0;
+    var winner;
 
     //array of the trails of all snakes
     allTrails = [];
     for(var i = 0; i < players.length; i++){
         allTrails = allTrails.concat(players[i].snake.trailArr);
+        if(!players[i].loser){
+            countWinners++;
+            winner = players[i];
+        }
+    }
+
+    if(countWinners == 1){
+        alert("player" + winner.name + " Winner!")
     }
 
     for (var i = 0; i < players.length; i++) {
@@ -168,22 +178,22 @@ function animate() {
                     switch (powerUpArr[j].sort) {
                         case 1:
                             players[i].snake.bigger();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.smaller();}, waitTime);
                             break;
                         case 2:
                             players[i].snake.smaller();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.bigger();}, waitTime);
                             break;
                         case 3:
                             players[i].snake.faster();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.slower();}, waitTime);
                             break;
                         case 4:
                             players[i].snake.slower();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.faster();}, waitTime);
                             break;
                         case 5:
@@ -194,11 +204,12 @@ function animate() {
                             break;
                         case 6:
                             players[i].snake.moreJumps();
+                            var that = players[i];
                             setTimeout(function(){that.snake.lessJumps();}, waitTime);
                             break;
                         case 7:
                             players[i].snake.mirroring();
-                            var that = players[i]
+                            var that = players[i];
                             setTimeout(function(){that.snake.mirroring();}, waitTime);
                             break;
                         default:
@@ -255,9 +266,9 @@ function addLights() {
 };
 
 //timer for placing powerups
-function timerPowerUp(){
+function addPowerUps(){
     powerUpArr.push(new PowerUps());
-    setTimeout(timerPowerUp,  Math.random() * (15000 - 3000) + 3000);
+    setTimeout(addPowerUps,  Math.random() * (15000 - 3000) + 3000);
 }
 
 //Resizes window after window size changed

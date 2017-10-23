@@ -12,7 +12,7 @@ html, body{
 }
 
 /*CSS for overlay menu and pause, play, etc. buttons*/
-#overlay2, #overlay, #win{
+#overlay2, #overlay, #win, #layer{
     position: fixed; /* Overlay on top of page*/
     display: none;
     width: 100%; /* Overlay width*/
@@ -23,7 +23,7 @@ html, body{
     bottom: 0;
     background-color: rgba(255,255,255,0.5); /* White background with opacity */
     z-index: 2; /* Stack order*/
-    cursor: pointer; /*The cursor is a pointer and indicates a link*/
+    /*cursor: pointer; !*The cursor is a pointer and indicates a link*!*/
     text-align: center;
 }
 
@@ -37,14 +37,17 @@ html, body{
     top: 250px;
 
     font-size: 30px;
+    cursor: pointer;
 }
 
 #reset, #continue{
     height: 75px;
     width: 150px;
     border-radius: 10px;
+    margin: 10px;
 
     font-size: 30px;
+    cursor: pointer;
 }
 
 #center{
@@ -72,4 +75,33 @@ html, body{
     top: 20px;
     right: 20px;
     font-size: 16px;
+    cursor: pointer;
+}
+
+#game, #players{
+    position: relative;
+    top: 50px;
+    bottom: auto;
+    color: White;
+}
+
+#players, #game, #startbutton{
+    font-size: 28px;
+}
+#pbutton{
+    font-size: 20px;
+}
+
+#pbutton, #startbutton{
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#startbutton{
+    margin: 10px;
+}
+
+.cinput{
+    border-radius: 10px;
+    padding: 5px;
 }
