@@ -67,6 +67,13 @@ html, body{
     text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
 }
 
+#instructions{
+    position: relative;
+    top: 100px;
+
+    font-size: 20px;
+}
+
 #pauseBtn{
     height: 35px;
     width: 60px;
