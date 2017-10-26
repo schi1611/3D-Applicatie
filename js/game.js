@@ -26,6 +26,7 @@ class Game {
         animate();
         document.getElementById("players").style.display = "none" ;
         document.getElementById("game").style.display = "none";
+		document.getElementById("image").style.display = "none";
     }
     setcontrols()
     {
@@ -104,5 +105,6 @@ function setControls()
 }
 function gamereset() {
     document.getElementById("overlay2").style.display = "none";
+    document.getElementById("win").style.display = "none";
     Game.resetGame();
 }

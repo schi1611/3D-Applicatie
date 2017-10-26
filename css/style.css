@@ -50,13 +50,23 @@ html, body{
     cursor: pointer;
 }
 
+#reset2, #newgame{
+    height: 75px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+
 #center{
     position: relative;
     margin: auto;
     top: 250px;
 }
 
-#gameTitle, #paused{
+#gameTitle, #paused, #gameover{
     position: relative;
     margin: auto;
     top: 60px;

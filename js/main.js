@@ -38,7 +38,7 @@ function collision(speedx, speedz, _line, i, newPos) {
 
     if(intersects.length > 0){
         let intersection = intersects[0];
-        console.log("intersects found");
+        //console.log("intersects found");
         if(intersection.distance < 1){
             players[i].snake.collision();
             players[i].loser = true;
@@ -136,7 +136,10 @@ function animate() {
     }
 
     if(countWinners === 1){
-        alert("player" + winner.name + " Winner!")
+        //alert("player" + winner.name + " Winner!")
+        winner.snake.speed = 0;
+        document.getElementById("gameover").innerHTML = "<p>The winner is Player " + winner.name + "!</p>";
+        document.getElementById("win").style.display = "block";
     }
 
     for (let i = 0; i < players.length; i++) {

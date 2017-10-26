@@ -21,6 +21,7 @@
     </head>
     <body>
         <div id="canvas">
+		 <img id="image" src="img/playfield.jpg" alt="playfield" height="100%" width="100%">
             <div id="layer">
                 <div id="game"></div>
                 <div id="players"></div>
@@ -40,6 +41,12 @@
                     <button type="button" id="continue" onclick="pauseOff()">Continue</button><br>
                     <button type="button" id="reset" onclick="gamereset()">Reset</button>
                 </div>
+            </div>
+
+            <div id="win">
+                <div id="gameover"></div>
+                <button type="button" id="reset2" onclick="gamereset()">Start Again</button><br>
+                <button type="button" id="newgame" onclick="location.reload()">New Game</button>
             </div>
 
             <button type="button" id="pauseBtn" onclick="pauseOn()">Pause</button>
