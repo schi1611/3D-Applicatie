@@ -10,14 +10,14 @@ let allTrails = [];
 let paused = false;
 let timeoutfunction;
 
-function collision(speedx, speedz, _line, i, newPos) {
+function collision(speedx, speedy, speedz, _line, i, newPos) {
     if (line) {
         scene.remove(_line);
     }
 
     // Draw a line from pointA in the given direction at distance 100
     let pointA = newPos;
-    let direction = new THREE.Vector3(speedx,0,speedz).normalize();
+    let direction = new THREE.Vector3(speedx,speedy,speedz).normalize();
     direction = new THREE.Vector3().multiplyVectors(direction, new THREE.Vector3(-1,0,-1));
 
     let distance = 1; // at what distance to determine pointB
@@ -119,6 +119,8 @@ function onLoad() {
 let line = undefined;
 let line2 = undefined;
 let line3 = undefined;
+let line4 = undefined;
+let line5 = undefined;
 
 function animate() {
     requestAnimationFrame(animate);
@@ -156,17 +158,20 @@ function animate() {
         speedx = -Math.sin(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
         speedz = Math.cos(players[i].snake.sphere.rotation.y) * players[i].snake.speed;
 
-        line = collision(speedx, speedz, line, i, newPos);
+        line = collision(speedx, 0, speedz, line, i, newPos);
 
         speedx = -Math.sin(players[i].snake.sphere.rotation.y + 0.8) * players[i].snake.speed;
         speedz = Math.cos(players[i].snake.sphere.rotation.y + 0.8) * players[i].snake.speed;
 
-        line2 = collision(speedx, speedz, line2, i, newPos);
+        line2 = collision(speedx, 0, speedz, line2, i, newPos);
 
         speedx = -Math.sin(players[i].snake.sphere.rotation.y - 0.8) * players[i].snake.speed;
         speedz = Math.cos(players[i].snake.sphere.rotation.y - 0.8) * players[i].snake.speed;
 
-        line3 = collision(speedx, speedz, line3, i, newPos);
+        line3 = collision(speedx, 0, speedz, line3, i, newPos);
+
+        //for collision going down in jump
+        line4 = collision(0, (players[i].snake.sphere.position.y * players[i].snake.speed), 0, line4, i, newPos);
     }
 
     for(let i = 0; i < players.length; i++)
