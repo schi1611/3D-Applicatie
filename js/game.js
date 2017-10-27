@@ -24,6 +24,7 @@ class Game {
         }
         players = this.players;
         animate();
+        addPowerUps();
         document.getElementById("players").style.display = "none" ;
         document.getElementById("game").style.display = "none";
 		document.getElementById("image").style.display = "none";
@@ -88,6 +89,10 @@ class Game {
         for (let i = 0; i < powerUpArr.length; i++)
             powerUpArr[i].removeMesh();
         powerUpArr = [];
+        //reset paused variable (for powerups)
+        paused = false;
+        //clear de duration of the powerup on the snake
+        clearTimeout(timeoutfunction);
     }
 
 }

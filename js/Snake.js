@@ -30,7 +30,7 @@ class Snake{
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldRot = this.sphere.rotation.y;
         this.trailArr = [];
-        //this.boxArr = [];
+        this.boxArr = [];
 
         //jump
         this.isJumping = false;
@@ -71,19 +71,19 @@ class Snake{
                 //remove old and create new
                 trail3d = this.cylinderMesh(this.oldestPos, newPos, this.material, this.size);
                 scene.remove(this.trailArr.pop());
-                // var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
-                // scene.remove(this.boxArr.pop());
+                var box = this.boxMesh(this.oldestPos, newPos, this.cubeMaterial, this.size*2);
+                scene.remove(this.boxArr.pop());
             } else {
                 //create new
                 trail3d = this.cylinderMesh(this.oldPos, newPos, this.material, this.size);
-                //var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
+                var box = this.boxMesh(this.oldPos, newPos, this.cubeMaterial, this.size*2);
                 this.oldestPos = newPos;
             }
         }
         else{
             //end old and start new
             trail3d = this.cylinderMesh(this.oldestPos, this.oldPos, this.material, this.size);
-            //var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
+            var box = this.boxMesh(this.oldestPos, this.oldPos, this.cubeMaterial, this.size*2);
             this.oldestPos = newPos;
         }
 
@@ -91,8 +91,8 @@ class Snake{
         trail3d.castShadow = true;
         this.trailArr.push(trail3d);
         scene.add(trail3d);
-        //this.boxArr.push(box);
-        //scene.add(box);
+        this.boxArr.push(box);
+        scene.add(box);
         this.oldPos = newPos;
         this.oldRot = newRot;
         this.trail = true;
@@ -169,6 +169,9 @@ class Snake{
         this.sphere.position.x = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random snake x position
         this.sphere.position.z = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
         this.speed = 0.5;
+        //same size as at the start
+        this.sphere.scale.multiplyScalar(2/this.size);
+        this.size = 2;
         this.oldPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
         this.powerUp = false;
@@ -195,22 +198,22 @@ class Snake{
     return edge;
     }
 
-    // boxMesh(pointX, pointY, material, size) {
-    //     var direction = new THREE.Vector3().subVectors(pointY, pointX);
-    //     var orientation = new THREE.Matrix4();
-    //     orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
-    //     orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
-    //         0, 0, 1, 0,
-    //         0, -1, 0, 0,
-    //         0, 0, 0, 1));
-    //     var edgeGeometry = new THREE.BoxGeometry(size, direction.length()+1, size);
-    //     var edge = new THREE.Mesh(edgeGeometry, material);
-    //     edge.material.visible = false;
-    //     edge.applyMatrix(orientation);
-    //     // position based on midpoints
-    //     edge.position.x = (pointY.x + pointX.x) / 2;
-    //     edge.position.y = (pointY.y + pointX.y) / 2;
-    //     edge.position.z = (pointY.z + pointX.z) / 2;
-    //     return edge;
-    // }
+    boxMesh(pointX, pointY, material, size) {
+        var direction = new THREE.Vector3().subVectors(pointY, pointX);
+        var orientation = new THREE.Matrix4();
+        orientation.lookAt(pointX, pointY, new THREE.Object3D().up);
+        orientation.multiply(new THREE.Matrix4().set(1, 0, 0, 0,
+            0, 0, 1, 0,
+            0, -1, 0, 0,
+            0, 0, 0, 1));
+        var edgeGeometry = new THREE.BoxGeometry(size, direction.length()+1, size);
+        var edge = new THREE.Mesh(edgeGeometry, material);
+        edge.material.visible = false;
+        edge.applyMatrix(orientation);
+        // position based on midpoints
+        edge.position.x = (pointY.x + pointX.x) / 2;
+        edge.position.y = (pointY.y + pointX.y) / 2;
+        edge.position.z = (pointY.z + pointX.z) / 2;
+        return edge;
+    }
 }

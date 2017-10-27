@@ -7,7 +7,8 @@ let cGroup = new THREE.Group();
 let powerUpArr = [];
 let waitTime = 10000;
 let allTrails = [];
-//let placePowerUp = false;
+let paused = false;
+let timeoutfunction;
 
 function collision(speedx, speedz, _line, i, newPos) {
     if (line) {
@@ -110,7 +111,7 @@ function onLoad() {
 
     game = new Game();
 
-    addPowerUps();
+    //addPowerUps();
 
     //animate();
 }
@@ -138,6 +139,7 @@ function animate() {
     if(countWinners === 1){
         //alert("player" + winner.name + " Winner!")
         winner.snake.speed = 0;
+        paused = true;
         document.getElementById("gameover").innerHTML = "<p>The winner is Player " + winner.name + "!</p>";
         document.getElementById("win").style.display = "block";
     }
@@ -183,22 +185,22 @@ function animate() {
                         case 1:
                             players[i].snake.bigger();
                             //let that = players[i];
-                            setTimeout(function(){that.snake.smaller();}, waitTime);
+                            timeoutfunction = setTimeout(function(){that.snake.smaller();}, waitTime);
                             break;
                         case 2:
                             players[i].snake.smaller();
                            //let that = players[i];
-                            setTimeout(function(){that.snake.bigger();}, waitTime);
+                            timeoutfunction = setTimeout(function(){that.snake.bigger();}, waitTime);
                             break;
                         case 3:
                             players[i].snake.faster();
                             //let that = players[i];
-                            setTimeout(function(){that.snake.slower();}, waitTime);
+                            timeoutfunction = setTimeout(function(){that.snake.slower();}, waitTime);
                             break;
                         case 4:
                             players[i].snake.slower();
                             //let that = players[i];
-                            setTimeout(function(){that.snake.faster();}, waitTime);
+                            timeoutfunction = setTimeout(function(){that.snake.faster();}, waitTime);
                             break;
                         case 5:
                             //all snake trails removed
@@ -209,12 +211,12 @@ function animate() {
                         case 6:
                             players[i].snake.moreJumps();
                             //let that = players[i];
-                            setTimeout(function(){that.snake.lessJumps();}, waitTime);
+                            timeoutfunction = setTimeout(function(){that.snake.lessJumps();}, waitTime);
                             break;
                         case 7:
                             players[i].snake.mirroring();
                             //let that = players[i];
-                            setTimeout(function(){that.snake.mirroring();}, waitTime);
+                            timeoutfunction = setTimeout(function(){that.snake.mirroring();}, waitTime);
                             break;
                         default:
                             break;
@@ -271,8 +273,10 @@ function addLights() {
 
 //timer for placing powerups
 function addPowerUps(){
-    powerUpArr.push(new PowerUps());
-    setTimeout(addPowerUps,  Math.random() * (15000 - 3000) + 3000);
+    if(!paused){
+        powerUpArr.push(new PowerUps());
+        setTimeout(addPowerUps,  Math.random() * (15000 - 3000) + 3000);
+    }
 }
 
 //Resizes window after window size changed
