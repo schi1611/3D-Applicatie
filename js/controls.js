@@ -14,6 +14,10 @@ class Controls
             this.right = 39;
         if (jump === "JUMP" || jump === "jump")
             this.jump = 32;
+        if (jump === "UP" || jump === "up")
+            this.jump = 38;
+        if (jump === "DOWN" || jump === "down")
+            this.jump = 40;
         this.keyboard = {};
         this.keyboard[this.left] = false;
         this.keyboard[this.right] = false;

@@ -20,7 +20,7 @@ class Game {
         for (let i = 0; i < this.totalplayers; i++)
         {
             this.players.push(new Player(i+1, new Snake(this.playercolors[i]), this.controllers[i]));
-            this.players[i].snake.faster();
+            //this.players[i].snake.faster();
         }
         players = this.players;
         animate();
