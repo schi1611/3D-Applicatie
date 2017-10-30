@@ -281,8 +281,6 @@ function addPowerUps(){
     if(!paused){
         powerUpArr.push(new PowerUps());
         setTimeout(addPowerUps,  Math.random() * (15000 - 3000) + 3000);
-    }else{
-        addPowerUps();
     }
 }
 

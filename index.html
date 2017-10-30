@@ -88,6 +88,7 @@
             function pauseOff(){
                 document.getElementById("overlay2").style.display = "none";
                 paused = false;
+                addPowerUps();
 
                 for(let i = 0; i < players.length; i++) {
                     players[i].snake.speed = players[i].snake.lastSpeed;

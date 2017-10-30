@@ -91,6 +91,7 @@ class Game {
         powerUpArr = [];
         //reset paused variable (for powerups)
         paused = false;
+        addPowerUps();
         //clear de duration of the powerup on the snake
         clearTimeout(timeoutfunction);
     }
