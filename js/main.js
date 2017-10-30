@@ -125,8 +125,6 @@ let line5 = undefined;
 function animate() {
     requestAnimationFrame(animate);
 
-    console.log(paused);
-
     let countWinners = 0;
     let winner;
 
@@ -281,11 +279,9 @@ function addLights() {
 //timer for placing powerups
 function addPowerUps(){
     if(!paused){
-        console.log("wel pwup");
         powerUpArr.push(new PowerUps());
         setTimeout(addPowerUps,  Math.random() * (15000 - 3000) + 3000);
     }else{
-        console.log("geen pwup");
         addPowerUps();
     }
 }
