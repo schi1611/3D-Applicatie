@@ -172,6 +172,7 @@ class Snake{
         this.sphere.position.x = Math.floor(Math.random() * ( width/4 - 20 )) - width/8 + 10 ; //random snake x position
         this.sphere.position.z = Math.floor(Math.random() * ( height/4 - 20 )) - height/8 ; //random snake z position
         this.sphere.position.y = this.size;
+        this.sphere.rotation.y = Math.floor(Math.random() * ( 2*Math.PI ))  ;
         this.speed = 1;
         this.oldPos = new THREE.Vector3().copy(this.sphere.position);
         this.oldestPos = new THREE.Vector3().copy(this.sphere.position);
