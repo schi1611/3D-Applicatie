@@ -256,6 +256,7 @@ function animate() {
     }
 
     window.addEventListener( 'resize', onWindowResize, false );
+    renderer.setClearColor (0x9FE5E5, 1);
     renderer.render(scene, camera);
 }
 
