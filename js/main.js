@@ -281,7 +281,7 @@ function addLights() {
 function addPowerUps(){
     if(!paused){
         powerUpArr.push(new PowerUps());
-        setTimeout(addPowerUps,  Math.random() * (15000 - 3000) + 3000);
+        setTimeout(addPowerUps,  Math.random() * (15000 - 8000) + 3000);
     }
 }
 
