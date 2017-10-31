@@ -69,51 +69,36 @@ function onLoad() {
     scene.add(ground);
     scene.add(cGroup);
 
-    addLights();
+    // Models/material loading!
+    let mtlLoader = new THREE.MTLLoader();
+    mtlLoader.load("Models/PlayGround.mtl", function(materials){
 
-    // snake = new Snake(0xffff00);
-    // snake.faster();
-    //
-    // player = new Player(0,snake, new Controls("A", "D", "S"));
-    // player2 = new Player(1, new Snake(0x0000ff), new Controls("LEFT","RIGHT", " "));
-    // player2.snake.faster();
-    // players = [player, player2];
+        materials.preload();
+        let objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(materials);
+
+        objLoader.load("Models/PlayGround.obj", function(mesh){
+
+            mesh.traverse(function(node){
+                if( node instanceof THREE.Mesh ){
+                    //node.castShadow = true;
+                    node.receiveShadow = true;
+                }
+            });
+
+            scene.add(mesh);
+            mesh.scale.set(width/1495,height/1460,1);
+            mesh.rotation.x = -Math.PI/2;
+            mesh.position.set(0.3,0,-7);
+        });
+
+    });
+
+    addLights();
 
     camera.lookAt(new THREE.Vector3(0,0,0));
 
-    // powerUp = new PowerUps();
-    // powerUpArr.push(powerUp);
-    // console.log(powerUp.sort, powerUp.randomX, powerUp.randomZ);
-    //
-    // var powerUp2 = new PowerUps();
-    // powerUpArr.push(powerUp2);
-    // console.log(powerUp2.sort, powerUp2.randomX, powerUp2.randomZ);
-    //
-    // var powerUp3 = new PowerUps();
-    // powerUpArr.push(powerUp3);
-    // console.log(powerUp3.sort, powerUp3.randomX, powerUp3.randomZ);
-    //
-    // var powerUp4 = new PowerUps();
-    // powerUpArr.push(powerUp4);
-    // console.log(powerUp4.sort, powerUp4.randomX, powerUp4.randomZ);
-    //
-    // var powerUp5 = new PowerUps();
-    // powerUpArr.push(powerUp5);
-    // console.log(powerUp5.sort, powerUp5.randomX, powerUp5.randomZ);
-    //
-    // var powerUp6 = new PowerUps();
-    // powerUpArr.push(powerUp6);
-    // console.log(powerUp6.sort, powerUp6.randomX, powerUp6.randomZ);
-    //
-    // var powerUp7 = new PowerUps();
-    // powerUpArr.push(powerUp7);
-    // console.log(powerUp7.sort, powerUp7.randomX, powerUp7.randomZ);
-
     game = new Game();
-
-    //addPowerUps();
-
-    //animate();
 }
 
 let line = undefined;
